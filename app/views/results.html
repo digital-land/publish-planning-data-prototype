@@ -3,7 +3,7 @@
 {% if data.hasErrors %}
   {% set pageName = 'Your data has errors' %}
 {% else %}
-  {% set pageName = 'Your data is ready to publish' %}
+  {% set pageName = 'Your data looks correct' %}
 {% endif %}
 
 {% block beforeContent %}
@@ -20,20 +20,20 @@
         {{pageName}}
       </h1>
 
-      <p>Your data has the following errors:</p>
-
-      <ul class="govuk-list govuk-list--bullet">
-        <li>
-          405 rows have an incorrect date format
-        </li>
-        <li>
-          6 rows have something else wrong with them
-        </li>
-      </ul>
-
       {% if data.hasErrors %}
+        <p>Your data has the following errors:</p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            405 rows have an incorrect date format
+          </li>
+          <li>
+            6 rows have something else wrong with them
+          </li>
+        </ul>
         <p>After you fix your data, <a href="/upload">upload the new version of your dataset</a>.</p>
       {% else %}
+        <p>You can continue to send your data for publishing.</p>
         <form novalidate method="post">
           {{ govukButton({
             text: "Continue"

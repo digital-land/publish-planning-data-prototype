@@ -78,8 +78,6 @@ router.post('/url', (req, res) => {
 })
 
 router.post('/check', (req, res) => {
-
   delete req.session.data.check
-
   res.redirect('/confirmation')
 })
