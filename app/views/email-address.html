@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'URL address of data' %}
+{% set pageName = 'Your email address' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,15 +15,22 @@
       <form novalidate method="post">
 
         {{ govukInput({
-          id: "check[url]",
-          name: "check[url]",
+          id: "check[emailAddress]",
+          name: "check[emailAddress]",
           label: {
             text: pageName,
             isPageHeading: true,
             classes: 'govuk-label--l'
           },
-          value: data.check.url
+          type: "email",
+          autocomplete: "email",
+          spellcheck: false
         }) }}
+
+
+
+
+
 
         {{ govukButton({
           text: "Continue"

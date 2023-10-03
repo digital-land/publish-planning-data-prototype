@@ -1,0 +1,27 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = "Planning data sent" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleHtml: pageName
+    }) }}
+
+    <p>You’ll be sent a confirmation email. This email will include a link to <a href="/applications/{{application.id}}">download your data</a>.</p>
+
+    <h2 class="govuk-heading-m">What happens next</h2>
+
+    <p>Your data will usually be reviewed within 5 working days.</p>
+
+    <h2 class="govuk-heading-m">
+      Give feedback
+    </h2>
+
+    <p><a href="#">Give feedback about this service</a> (takes 30 seconds).</p>
+
+  </div>
+</div>
+
+{% endblock %}

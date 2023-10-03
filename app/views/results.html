@@ -1,6 +1,10 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Results' %}
+{% if data.hasErrors %}
+  {% set pageName = 'Your data has errors' %}
+{% else %}
+  {% set pageName = 'Your data is ready to publish' %}
+{% endif %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -16,11 +20,27 @@
         {{pageName}}
       </h1>
 
-      <form novalidate method="post">
-        {{ govukButton({
-          text: "Continue"
-        }) }}
-      </form>
+      <p>Your data has the following errors:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          405 rows have an incorrect date format
+        </li>
+        <li>
+          6 rows have something else wrong with them
+        </li>
+      </ul>
+
+      {% if data.hasErrors %}
+        <p>After you fix your data, <a href="/upload">upload the new version of your dataset</a>.</p>
+      {% else %}
+        <form novalidate method="post">
+          {{ govukButton({
+            text: "Continue"
+          }) }}
+        </form>
+      {% endif %}
+
     </div>
   </div>
 {% endblock %}
