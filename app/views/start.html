@@ -1,0 +1,59 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = serviceName %}
+
+{% block content %}
+
+{% set content %}
+
+  Use this service to:
+
+  - check your data follows the standard
+  - get your data published
+
+  {{ govukButton({
+    text: "Start now",
+    href: "/data-subject",
+    isStartButton: true
+  }) }}
+
+  ## Before you start
+
+  We will accept data supplied as either:
+
+  - CSV
+  - GeoJSON
+  - GML
+  - Geopackage
+{% endset %}
+
+  <h1 class="govuk-heading-xl">
+    {{serviceName}}
+  </h1>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {{content | govukMarkdown(headingsStartWith=1)}}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {{ xGovukRelatedNavigation({
+        sections: [{
+          items: [{
+            text: "Stuff for awareness",
+            href: "/"
+          }, {
+            text: "Stuff for awareness",
+            href: "/"
+          }],
+          subsections: [{
+            title: "Explore the topic",
+            items: [{
+              text: "Housing and planning",
+              href: "/browse/performing-arts"
+            }]
+          }]
+        }]
+      }) }}
+    </div>
+  </div>
+{% endblock %}
