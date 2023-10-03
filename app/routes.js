@@ -9,9 +9,9 @@ const _ = require('lodash')
 
 router.post('/data-subject', (req, res) => {
   if(_.get(req, 'body.check.dataSubject') == 'Listed building') {
-    res.redirect('/results')
-  } else {
     res.redirect('/upload')
+  } else {
+    res.redirect('/dataset')
   }
 })
 

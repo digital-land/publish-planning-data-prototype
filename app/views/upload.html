@@ -1,6 +1,10 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Upload your ' + data.check.dataset | lower %}
+{% if data.check.dataSubject == 'Listed building' %}
+  {% set pageName = 'Upload ' + data.check.dataSubject | lower %}
+{% else %}
+  {% set pageName = 'Upload ' + data.check.dataset | lower %}
+{% endif %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -13,6 +17,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
+
         {{ govukFileUpload({
           id: "check[file]",
           name: "check[file]",
