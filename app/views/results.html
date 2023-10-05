@@ -1,9 +1,9 @@
 {% extends "layouts/main.html" %}
 
 {% if data.hasErrors %}
-  {% set pageName = 'Your data has errors' %}
+  {% set pageName = 'You need to make changes to the data before you continue' %}
 {% else %}
-  {% set pageName = 'Your data looks correct' %}
+  {% set pageName = 'Check the data before you continue' %}
 {% endif %}
 
 {% block beforeContent %}
@@ -14,26 +14,128 @@
 {% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">
         {{pageName}}
       </h1>
 
-      {% if data.hasErrors %}
-        <p>Your data has the following errors:</p>
+      <h2 class="govuk-heading-m">
+        Summary
+      </h2>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            405 rows have an incorrect date format
-          </li>
-          <li>
-            6 rows have something else wrong with them
-          </li>
-        </ul>
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Data subject"
+            },
+            value: {
+              text: data.check.dataSubject
+            }
+          },
+          {
+            key: {
+              text: "Dataset"
+            },
+            value: {
+              text: data.check.dataset
+            }
+          },
+          {
+            key: {
+              text: "File name"
+            },
+            value: {
+              text: "blah.csv"
+            }
+          },
+          {
+            key: {
+              text: "Rows uploaded"
+            },
+            value: {
+              text: "452"
+            }
+          },
+          {
+            key: {
+              text: "Rows accepted"
+            },
+            value: {
+              text: "253"
+            }
+          },
+          {
+            key: {
+              text: "Rows removed"
+            },
+            value: {
+              text: "199"
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">
+        Errors that have been fixed automatically
+      </h2>
+
+      {{ govukSummaryList({
+        rows: [
+          {
+            key: {
+              text: "Date format"
+            },
+            value: {
+              text: "405 rows had an incorrect date format. We changed the format to X."
+            }
+          },
+          {
+            key: {
+              text: "Thing"
+            },
+            value: {
+              text: "Detail"
+            }
+          }
+        ]
+      }) }}
+
+      <p>We recommend changing your data to follow the corrections made above.</p>
+
+      {% if data.hasErrors %}
+
+        <h2 class="govuk-heading-m">
+          Errors that you need to fix
+        </h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "21 areas provided fall outside of England"
+              },
+              value: {
+                text: "Only areas in England is acceptable"
+              }
+            },
+            {
+              key: {
+                text: "3 entry dates are in the future"
+              },
+              value: {
+                text: "Entry dates must be today or in the past"
+              }
+            }
+          ]
+        }) }}
         <p>After you fix your data, <a href="/upload">upload the new version of your dataset</a>.</p>
-      {% else %}
-        <p>You can continue to send your data for publishing.</p>
+      {% endif %}
+
+
+      {% if not data.hasErrors %}
         <form novalidate method="post">
           {{ govukButton({
             text: "Continue"
