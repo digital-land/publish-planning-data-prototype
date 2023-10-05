@@ -70,6 +70,14 @@ router.post('/download', (req, res) => {
 })
 
 router.post('/email-address', (req, res) => {
+  res.redirect('/name')
+})
+
+router.post('/name', (req, res) => {
+  res.redirect('/council')
+})
+
+router.post('/council', (req, res) => {
   res.redirect('/url')
 })
 

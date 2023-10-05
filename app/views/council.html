@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Upload data' %}
+{% set pageName = 'Name of local planning authority' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -14,18 +14,23 @@
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
 
-        {{ govukFileUpload({
-          id: "check[file]",
-          name: "check[file]",
+        {{ govukInput({
+          id: "check[LPAName]",
+          name: "check[LPAName]",
           label: {
             text: pageName,
             isPageHeading: true,
             classes: 'govuk-label--l'
           },
-          hint: {
-            text: "You can upload a CSV, GeoJSON, GML or Geopackage file"
-          }
+          type: "text",
+          value: data.check.LPAName
         }) }}
+
+
+
+
+
+
         {{ govukButton({
           text: "Continue"
         }) }}

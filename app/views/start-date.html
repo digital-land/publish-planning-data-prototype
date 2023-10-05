@@ -1,0 +1,57 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = 'Data start date' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form novalidate method="post">
+
+        {{ govukDateInput({
+          id: "check[startDate]",
+          fieldset: {
+            legend: {
+              text: pageName,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--l"
+            }
+          },
+          hint: {
+            text: "For example, 31 3 2023"
+          },
+          items: [
+            {
+              name: "check[startDate]",
+              label: "Day",
+              value: data.check.startDate.day,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "check[startDate]",
+              label: "Month",
+              value: data.check.startDate.month,
+              classes: "govuk-input--width-2"
+            },
+            {
+              name: "check[startDate]",
+              label: "Year",
+              value: data.check.startDate.year,
+              classes: "govuk-input--width-4"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}

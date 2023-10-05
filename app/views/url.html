@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'URL address of data' %}
+{% set pageName = 'URL where your data is published' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -21,6 +21,9 @@
             text: pageName,
             isPageHeading: true,
             classes: 'govuk-label--l'
+          },
+          hint: {
+            text: "For example, https://www.barnet.gov.uk/register.csv"
           },
           value: data.check.url
         }) }}
