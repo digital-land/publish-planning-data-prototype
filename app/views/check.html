@@ -85,6 +85,23 @@
                 }
               ]
             }
+          },
+          {
+            key: {
+              text: "Date you published your data"
+            },
+            value: {
+              text: data.check.startDate | isoDateFromDateInput | govukDate
+            },
+            actions: {
+              items: [
+                {
+                  href: "/start-date",
+                  text: "Change",
+                  visuallyHiddenText: "Date you published your data"
+                }
+              ]
+            }
           }
         ]
       }) }}

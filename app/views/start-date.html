@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Data start date' %}
+{% set pageName = 'Date you published your data' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -28,25 +28,27 @@
           },
           items: [
             {
-              name: "check[startDate]",
+              name: "check[startDate][day]",
               label: "Day",
               value: data.check.startDate.day,
               classes: "govuk-input--width-2"
             },
             {
-              name: "check[startDate]",
+              name: "check[startDate][month]",
               label: "Month",
               value: data.check.startDate.month,
               classes: "govuk-input--width-2"
             },
             {
-              name: "check[startDate]",
+              name: "check[startDate][year]",
               label: "Year",
               value: data.check.startDate.year,
               classes: "govuk-input--width-4"
             }
           ]
         }) }}
+
+        {{data | log}}
 
         {{ govukButton({
           text: "Continue"
