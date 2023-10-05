@@ -131,11 +131,291 @@
             }
           ]
         }) }}
-        <p>After you fix your data, <a href="/upload">upload the new version of your dataset</a>.</p>
+
       {% endif %}
 
+  </div>
+</div>
 
-      {% if not data.hasErrors %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h2 class="govuk-heading-m">
+        Records
+      </h2>
+
+      <div class="app-scrollable-container">
+        {{ govukTable({
+  head: [
+    {
+      text: "Row Number"
+    },
+    {
+      text: "Site Reference"
+    },
+    {
+      text: "Site Name"
+    },
+    {
+      text: "GeoX"
+    },
+    {
+      text: "GeoY"
+    },
+    {
+      text: "Hectares"
+    },
+    {
+      text: "Last Updated Date"
+    },
+    {
+      text: "Created Date"
+    },
+    {
+      text: "Organisation URI"
+    },
+    {
+      text: "Site Plan"
+    }
+  ],
+  rows: [
+    [
+      {
+        text: "1"
+      },
+      {
+        text: "AB1234"
+      },
+      {
+        text: "123 Main St, City, Country"
+      },
+      {
+        text: "42.123456"
+      },
+      {
+        text: "-71.987654"
+      },
+      {
+        text: "3.5"
+      },
+      {
+        text: "19 September 2023"
+      },
+      {
+        text: "19 September 2023"
+      },
+      {
+        text: "http://example.com/org1"
+      },
+      {
+        text: "http://example.com/siteplan1"
+      }
+    ],
+    [
+      {
+        text: "2"
+      },
+      {
+        text: "CD5678"
+      },
+      {
+        text: "456 Elm St, Town, Country"
+      },
+      {
+        text: "38.987654"
+      },
+      {
+        text: "-84.123456"
+      },
+      {
+        text: "2.2"
+      },
+      {
+        text: "20 September 2023"
+      },
+      {
+        text: "18 September 2023"
+      },
+      {
+        text: "http://example.com/org2"
+      },
+      {
+        text: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        text: "3"
+      },
+      {
+        text: "CD5678"
+      },
+      {
+        text: "456 Elm St, Town, Country"
+      },
+      {
+        text: "38.987654"
+      },
+      {
+        text: "-84.123456"
+      },
+      {
+        text: "2.2"
+      },
+      {
+        text: "20 September 2023"
+      },
+      {
+        text: "18 September 2023"
+      },
+      {
+        text: "http://example.com/org2"
+      },
+      {
+        text: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        text: "4"
+      },
+      {
+        text: "CD5678"
+      },
+      {
+        text: "456 Elm St, Town, Country"
+      },
+      {
+        text: "38.987654"
+      },
+      {
+        text: "-84.123456"
+      },
+      {
+        text: "2.2"
+      },
+      {
+        text: "20 September 2023"
+      },
+      {
+        text: "18 September 2023"
+      },
+      {
+        text: "http://example.com/org2"
+      },
+      {
+        text: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        text: "5"
+      },
+      {
+        text: "CD5678"
+      },
+      {
+        text: "456 Elm St, Town, Country"
+      },
+      {
+        text: "38.987654"
+      },
+      {
+        text: "-84.123456"
+      },
+      {
+        text: "2.2"
+      },
+      {
+        text: "20 September 2023"
+      },
+      {
+        text: "18 September 2023"
+      },
+      {
+        text: "http://example.com/org2"
+      },
+      {
+        text: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        text: "6"
+      },
+      {
+        text: "CD5678"
+      },
+      {
+        text: "456 Elm St, Town, Country"
+      },
+      {
+        text: "38.987654"
+      },
+      {
+        text: "-84.123456"
+      },
+      {
+        text: "2.2"
+      },
+      {
+        text: "20 September 2023"
+      },
+      {
+        text: "18 September 2023"
+      },
+      {
+        text: "http://example.com/org2"
+      },
+      {
+        text: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        text: "7"
+      },
+      {
+        text: "CD5678"
+      },
+      {
+        text: "456 Elm St, Town, Country"
+      },
+      {
+        text: "38.987654"
+      },
+      {
+        text: "-84.123456"
+      },
+      {
+        text: "2.2"
+      },
+      {
+        text: "20 September 2023"
+      },
+      {
+        text: "18 September 2023"
+      },
+      {
+        text: "http://example.com/org2"
+      },
+      {
+        text: "http://example.com/siteplan2"
+      }
+    ]
+  ]
+}) }}
+
+      </div>
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      {% if data.hasErrors %}
+        <p>After you fix your data, <a href="/upload">upload the new version of your dataset</a>.</p>
+      {% else %}
         <form novalidate method="post">
           {{ govukButton({
             text: "Continue"
