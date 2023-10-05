@@ -19,8 +19,8 @@
 
       <form method="post" novalidate>
         {{ govukInput({
-          id: "[new][firstName]",
-          name: "[new][firstName]",
+          id: "check[firstName]",
+          name: "check[firstName]",
           label: {
             text: "First name",
             classes: "govuk-label--m"
@@ -28,12 +28,12 @@
           hint: {
             text: "Or given name"
           },
-          value: data.new.firstName
+          value: data.check.firstName
         }) }}
 
         {{ govukInput({
-          id: "[new][lastName]",
-          name: "[new][lastName]",
+          id: "check[lastName]",
+          name: "check[lastName]",
           label: {
             text: "Last name",
             classes: "govuk-label--m"
@@ -41,7 +41,7 @@
           hint: {
             text: "Or family name"
           },
-          value: data.new.lastName
+          value: data.check.lastName
         }) }}
 
         {{ govukButton({

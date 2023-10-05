@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Check details and send data' %}
+{% set pageName = 'Check details and request publication' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -37,7 +37,41 @@
           },
           {
             key: {
-              text: "URL"
+              text: "Your name"
+            },
+            value: {
+              text: data.check.firstName + ' ' + data.check.lastName
+            },
+            actions: {
+              items: [
+                {
+                  href: "/name",
+                  text: "Change",
+                  visuallyHiddenText: "Your name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Local planning authority"
+            },
+            value: {
+              text: data.check.lpa
+            },
+            actions: {
+              items: [
+                {
+                  href: "/name",
+                  text: "Change",
+                  visuallyHiddenText: "Local planning authority"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "URL where your data is published"
             },
             value: {
               text: data.check.url
@@ -57,7 +91,7 @@
 
       <form novalidate method="post">
         {{ govukButton({
-          text: "Send data"
+          text: "Send request"
         }) }}
       </form>
     </div>

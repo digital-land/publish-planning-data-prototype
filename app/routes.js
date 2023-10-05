@@ -74,10 +74,10 @@ router.post('/email-address', (req, res) => {
 })
 
 router.post('/name', (req, res) => {
-  res.redirect('/council')
+  res.redirect('/lpa')
 })
 
-router.post('/council', (req, res) => {
+router.post('/lpa', (req, res) => {
   res.redirect('/url')
 })
 

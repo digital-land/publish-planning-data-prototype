@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Name of local planning authority' %}
+{% set pageName = 'Local planning authority' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,15 +15,15 @@
       <form novalidate method="post">
 
         {{ govukInput({
-          id: "check[LPAName]",
-          name: "check[LPAName]",
+          id: "check[lpa]",
+          name: "check[lpa]",
           label: {
             text: pageName,
             isPageHeading: true,
             classes: 'govuk-label--l'
           },
           type: "text",
-          value: data.check.LPAName
+          value: data.check.lpa
         }) }}
 
 
