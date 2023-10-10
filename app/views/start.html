@@ -17,7 +17,16 @@
     isStartButton: true
   }) }}
 
-  ## Before you start
+  ## Before you check your data
+
+  You need to prepare your:
+
+  - Conservation area data
+  - Listed building data
+  - Article 4 direction data
+  - Tree preservation order data
+
+  You may need to create more than one set of data for each subject. You'll find what to include in the [data specifications](https://www.planning.data.gov.uk/guidance/specifications/).
 
   We will accept data supplied as either:
 
@@ -25,6 +34,31 @@
   - GeoJSON
   - GML
   - Geopackage
+
+  These may be uploaded to a single URL, or served via an OGC WFS or ArcGIS API.
+
+  ## Before you can publish your data
+
+  You must be able to create or edit a webpage on your local planning authority’s (LPA) website. This will probably have a URL ending in .gov.uk or .org.
+
+  If you are not able to do this, you’ll need to ask the person who updates your website.
+
+  This webpage must have a URL that does not change, so we can keep collecting the data.
+
+  If the URL does change, send an email to [digitalland@levellingup.gov.uk](mailto:digitalland@levellingup.gov.uk).
+
+  Include:
+
+  - a summary of what the data is about
+  - a confirmation that the data is provided under the Open Government License
+  - the date you created or updated the webpage
+  - links to your data on this page, for example a CSV
+
+  {{ govukDetails({
+    summaryText: "Example web page",
+    text: "Text"
+  }) }}
+
 {% endset %}
 
   <div class="govuk-grid-row">
@@ -37,18 +71,13 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
-
-      {{content | govukMarkdown(headingsStartWith=1)}}
+      {{content | govukMarkdown}}
     </div>
     <div class="govuk-grid-column-one-third">
       {{ xGovukRelatedNavigation({
         sections: [{
           items: [{
-            text: "Stuff for awareness",
-            href: "/"
-          }, {
-            text: "Stuff for awareness",
+            text: "Data specifications",
             href: "/"
           }],
           subsections: [{
