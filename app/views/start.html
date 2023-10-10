@@ -4,6 +4,26 @@
 
 {% block content %}
 
+{% set example %}
+
+  ## About the data
+
+  This dataset shows the locations of conservation areas. Conservation areas are designated to safeguard areas of special architectural and historic interest, the character and appearance of which it is desirable to preserve or enhance. Within these areas special planning controls operate which need to be considered when undertaking development.
+
+  ## Data
+
+  [Southwark conservations areas (CSV, 188KB)](#)
+
+  ## Licensing
+
+  The data is provided under the [Open Government Licence](#).
+
+  ## Last updated
+
+  The data was last updated on 14 July 2023 at 9am.
+
+{% endset %}
+
 {% set content %}
 
   Use this service to:
@@ -55,8 +75,8 @@
   - links to your data on this page, for example a CSV
 
   {{ govukDetails({
-    summaryText: "Example web page",
-    text: "Text"
+    summaryText: "Example webpage",
+    text: example | govukMarkdown(headingsStartWith="m")
   }) }}
 
 {% endset %}
