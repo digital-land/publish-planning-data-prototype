@@ -41,10 +41,10 @@
 
   You need to prepare your:
 
-  - Conservation area data
-  - Listed building data
-  - Article 4 direction data
-  - Tree preservation order data
+  - conservation area data
+  - listed building data
+  - article 4 direction data
+  - tree preservation order data
 
   You may need to create more than one set of data for each subject. You'll find what to include in the [data specifications](https://www.planning.data.gov.uk/guidance/specifications/).
 
@@ -53,7 +53,7 @@
   - CSV
   - GeoJSON
   - GML
-  - Geopackage
+  - GeoPackage
 
   These may be uploaded to a single URL, or served via an OGC WFS or ArcGIS API.
 
@@ -61,13 +61,9 @@
 
   You must be able to create or edit a webpage on your local planning authority’s (LPA) website. This will probably have a URL ending in .gov.uk or .org.
 
-  If you are not able to do this, you’ll need to ask the person who updates your website.
+  If you’re not able to do this, you’ll need to ask the person who updates your website.
 
-  This webpage must have a URL that does not change, so we can keep collecting the data.
-
-  If the URL does change, send an email to [digitalland@levellingup.gov.uk](mailto:digitalland@levellingup.gov.uk).
-
-  Include:
+  The webpage needs to include:
 
   - a summary of what the data is about
   - a confirmation that the data is provided under the Open Government License
@@ -78,6 +74,8 @@
     summaryText: "Example webpage",
     text: example | govukMarkdown(headingsStartWith="m")
   }) }}
+
+  This webpage URL must not change, so we can keep collecting the data. If the URL does change, send an email to [digitalland@levellingup.gov.uk](mailto:digitalland@levellingup.gov.uk).
 
 {% endset %}
 
