@@ -82,7 +82,8 @@ router.post('/lpa', (req, res) => {
 })
 
 router.post('/url', (req, res) => {
-  res.redirect('/start-date')
+  // res.redirect('/start-date')
+  res.redirect('/check')
 })
 
 router.post('/start-date', (req, res) => {

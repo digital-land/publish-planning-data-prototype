@@ -1,4 +1,13 @@
 .app-scrollable-container {
+
+  table {
+    margin-bottom: 20px;
+    th, td {
+      white-space: nowrap;
+    }
+  }
+
+  max-height: 500px;
   @include govuk-responsive-margin(6, $direction: "bottom");
   padding-left: 15px;
   padding-right: 15px;

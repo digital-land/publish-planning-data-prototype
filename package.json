@@ -2,9 +2,11 @@
   "scripts": {
     "dev": "govuk-prototype-kit dev",
     "serve": "govuk-prototype-kit serve",
-    "start": "govuk-prototype-kit start"
+    "start": "govuk-prototype-kit start",
+    "generate-data": "node ./scripts/generate-result-sets.js"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.1.0",
     "@govuk-prototype-kit/common-templates": "1.2.2",
     "@x-govuk/govuk-prototype-components": "^2.0.2",
     "@x-govuk/govuk-prototype-filters": "^1.2.0",

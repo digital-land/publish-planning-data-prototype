@@ -1,9 +1,9 @@
 {% extends "layouts/main.html" %}
 
 {% if data.hasErrors %}
-  {% set pageName = 'You need to make changes to the data before you continue' %}
+  {% set pageName = 'There’s a problem with your data' %}
 {% else %}
-  {% set pageName = 'Check the data before you continue' %}
+  {% set pageName = 'Your data can be published' %}
 {% endif %}
 
 {% block beforeContent %}
@@ -17,72 +17,22 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <span class="govuk-caption-l">
+        {% if data.check.dataset %}
+          {{data.check.dataset}}
+        {% else %}
+          {{data.check.dataSubject}}
+        {% endif %}
+      </span>
       <h1 class="govuk-heading-l">
         {{pageName}}
       </h1>
 
-      <h2 class="govuk-heading-m">
-        Summary
-      </h2>
-
-      {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Data subject"
-            },
-            value: {
-              text: data.check.dataSubject
-            }
-          },
-          {
-            key: {
-              text: "Dataset"
-            },
-            value: {
-              text: data.check.dataset
-            }
-          },
-          {
-            key: {
-              text: "File name"
-            },
-            value: {
-              text: "blah.csv"
-            }
-          },
-          {
-            key: {
-              text: "Rows uploaded"
-            },
-            value: {
-              text: "452"
-            }
-          },
-          {
-            key: {
-              text: "Rows accepted"
-            },
-            value: {
-              text: "253"
-            }
-          },
-          {
-            key: {
-              text: "Rows removed"
-            },
-            value: {
-              text: "199"
-            }
-          }
-        ]
-      }) }}
-
-      <h2 class="govuk-heading-m">
+      {# <h2 class="govuk-heading-m">
         Errors that have been fixed automatically
-      </h2>
+      </h2> #}
 
-      {{ govukSummaryList({
+      {# {{ govukSummaryList({
         rows: [
           {
             key: {
@@ -101,60 +51,72 @@
             }
           }
         ]
-      }) }}
+      }) }} #}
 
-      <p>We recommend changing your data to follow the corrections made above.</p>
+      {# <p>We recommend changing your data to follow the corrections made above.</p> #}
 
       {% if data.hasErrors %}
 
-        <h2 class="govuk-heading-m">
-          Errors that you need to fix
-        </h2>
-
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "21 areas provided fall outside of England"
-              },
-              value: {
-                text: "Only areas in England is acceptable"
-              }
-            },
-            {
-              key: {
-                text: "3 entry dates are in the future"
-              },
-              value: {
-                text: "Entry dates must be today or in the past"
-              }
-            }
-          ]
-        }) }}
-
+        <ul class="govuk-list govuk-list--bullet">
+          <li>
+            21 locations are not in England
+          </li>
+          <li>
+            3 last updated dates are in the future
+          </li>
+          <li>
+            1 record has a missing reference
+          </li>
+        </ul>
+      {% else %}
+        {# <p>We have transformed some of your data.</p> #}
       {% endif %}
 
   </div>
 </div>
 
+{% set errorSiteReference %}
+  {{ govukInsetText({
+    classes: "app-inset-text---error",
+    html: '<p class="app-instruction-text">Reference is missing</p>'
+  }) }}
+{% endset %}
+
+{% set errorLocation %}
+  {{ govukInsetText({
+    classes: "app-inset-text---error",
+    html: '<p class="app-inset-text__value">456 Elm St, Town, Country</p> <p class="app-inset-text__error">Location is not in England</p>'
+  }) }}
+{% endset %}
+
+{% set errorDate %}
+  {{ govukInsetText({
+    classes: "app-inset-text---error",
+    html: '<p class="app-inset-text__value">20 May 2025</p> <p class="app-inset-text__error">Date must be in today or in the past</p>'
+  }) }}
+{% endset %}
+
+
+{% if data.hasErrors %}
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
       <h2 class="govuk-heading-m">
-        Records
+        Records with errors
       </h2>
 
       <div class="app-scrollable-container">
         {{ govukTable({
   head: [
     {
-      text: "Row Number"
+      text: "Row Number",
+      classes: "govuk-!-width-one-half"
     },
     {
-      text: "Site Reference"
+      text: "Site reference"
     },
     {
-      text: "Site Name"
+      text: "Site name"
     },
     {
       text: "GeoX"
@@ -166,241 +128,369 @@
       text: "Hectares"
     },
     {
-      text: "Last Updated Date"
+      text: "Updated date"
     },
     {
-      text: "Created Date"
+      text: "Created date"
     },
     {
       text: "Organisation URI"
     },
     {
-      text: "Site Plan"
+      text: "Site plan"
     }
   ],
   rows: [
     [
       {
-        text: "1"
+        html: "1"
       },
       {
-        text: "AB1234"
+        html: "AB1234"
       },
       {
-        text: "123 Main St, City, Country"
+        html: "123 Main St, City, Country"
       },
       {
-        text: "42.123456"
+        html: "42.123456"
       },
       {
-        text: "-71.987654"
+        html: "-71.987654"
       },
       {
-        text: "3.5"
+        html: "3.5"
       },
       {
-        text: "19 September 2023"
+        html: "19 September 2023"
       },
       {
-        text: "19 September 2023"
+        html: "19 September 2023"
       },
       {
-        text: "http://example.com/org1"
+        html: "http://example.com/org1"
       },
       {
-        text: "http://example.com/siteplan1"
+        html: "http://example.com/siteplan1"
       }
     ],
     [
       {
-        text: "2"
+        html: "2"
       },
       {
-        text: "CD5678"
+        html: errorSiteReference
       },
       {
-        text: "456 Elm St, Town, Country"
+        html: "456 Elm St, Town, Country"
       },
       {
-        text: "38.987654"
+        html: "38.987654"
       },
       {
-        text: "-84.123456"
+        html: "-84.123456"
       },
       {
-        text: "2.2"
+        html: "2.2"
       },
       {
-        text: "20 September 2023"
+        html: "20 September 2023"
       },
       {
-        text: "18 September 2023"
+        html: "18 September 2023"
       },
       {
-        text: "http://example.com/org2"
+        html: "http://example.com/org2"
       },
       {
-        text: "http://example.com/siteplan2"
+        html: "http://example.com/siteplan2"
       }
     ],
     [
       {
-        text: "3"
+        html: "3"
       },
       {
-        text: "CD5678"
+        html: "CD5678"
       },
       {
-        text: "456 Elm St, Town, Country"
+        html: errorLocation
       },
       {
-        text: "38.987654"
+        html: "38.987654"
       },
       {
-        text: "-84.123456"
+        html: "-84.123456"
       },
       {
-        text: "2.2"
+        html: "2.2"
       },
       {
-        text: "20 September 2023"
+        html: "20 September 2023"
       },
       {
-        text: "18 September 2023"
+        html: "18 September 2023"
       },
       {
-        text: "http://example.com/org2"
+        html: "http://example.com/org2"
       },
       {
-        text: "http://example.com/siteplan2"
+        html: "http://example.com/siteplan2"
       }
     ],
     [
       {
-        text: "4"
+        html: "4"
       },
       {
-        text: "CD5678"
+        html: "CD5678"
       },
       {
-        text: "456 Elm St, Town, Country"
+        html: "456 Elm St, Town, Country"
       },
       {
-        text: "38.987654"
+        html: "38.987654"
       },
       {
-        text: "-84.123456"
+        html: "-84.123456"
       },
       {
-        text: "2.2"
+        html: "2.2"
       },
       {
-        text: "20 September 2023"
+        html: "20 September 2023"
       },
       {
-        text: "18 September 2023"
+        html: "18 September 2023"
       },
       {
-        text: "http://example.com/org2"
+        html: "http://example.com/org2"
       },
       {
-        text: "http://example.com/siteplan2"
+        html: "http://example.com/siteplan2"
       }
     ],
     [
       {
-        text: "5"
+        html: "5"
       },
       {
-        text: "CD5678"
+        html: "CD5678"
       },
       {
-        text: "456 Elm St, Town, Country"
+        html: "456 Elm St, Town, Country"
       },
       {
-        text: "38.987654"
+        html: "38.987654"
       },
       {
-        text: "-84.123456"
+        html: "-84.123456"
       },
       {
-        text: "2.2"
+        html: "2.2"
       },
       {
-        text: "20 September 2023"
+        html: errorDate
       },
       {
-        text: "18 September 2023"
+        html: "18 September 2023"
       },
       {
-        text: "http://example.com/org2"
+        html: "http://example.com/org2"
       },
       {
-        text: "http://example.com/siteplan2"
+        html: "http://example.com/siteplan2"
       }
     ],
     [
       {
-        text: "6"
+        html: "6"
       },
       {
-        text: "CD5678"
+        html: "CD5678"
       },
       {
-        text: "456 Elm St, Town, Country"
+        html: "456 Elm St, Town, Country"
       },
       {
-        text: "38.987654"
+        html: "38.987654"
       },
       {
-        text: "-84.123456"
+        html: "-84.123456"
       },
       {
-        text: "2.2"
+        html: "2.2"
       },
       {
-        text: "20 September 2023"
+        html: "20 September 2023"
       },
       {
-        text: "18 September 2023"
+        html: "18 September 2023"
       },
       {
-        text: "http://example.com/org2"
+        html: "http://example.com/org2"
       },
       {
-        text: "http://example.com/siteplan2"
+        html: "http://example.com/siteplan2"
       }
     ],
     [
       {
-        text: "7"
+        html: "7"
       },
       {
-        text: "CD5678"
+        html: "CD5678"
       },
       {
-        text: "456 Elm St, Town, Country"
+        html: "456 Elm St, Town, Country"
       },
       {
-        text: "38.987654"
+        html: "38.987654"
       },
       {
-        text: "-84.123456"
+        html: "-84.123456"
       },
       {
-        text: "2.2"
+        html: "2.2"
       },
       {
-        text: "20 September 2023"
+        html: "20 September 2023"
       },
       {
-        text: "18 September 2023"
+        html: "18 September 2023"
       },
       {
-        text: "http://example.com/org2"
+        html: "http://example.com/org2"
       },
       {
-        text: "http://example.com/siteplan2"
+        html: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        html: "8"
+      },
+      {
+        html: "CD5678"
+      },
+      {
+        html: "456 Elm St, Town, Country"
+      },
+      {
+        html: "38.987654"
+      },
+      {
+        html: "-84.123456"
+      },
+      {
+        html: "2.2"
+      },
+      {
+        html: "20 September 2023"
+      },
+      {
+        html: "18 September 2023"
+      },
+      {
+        html: "http://example.com/org2"
+      },
+      {
+        html: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        html: "9"
+      },
+      {
+        html: "CD5678"
+      },
+      {
+        html: "456 Elm St, Town, Country"
+      },
+      {
+        html: "38.987654"
+      },
+      {
+        html: "-84.123456"
+      },
+      {
+        html: "2.2"
+      },
+      {
+        html: "20 September 2023"
+      },
+      {
+        html: "18 September 2023"
+      },
+      {
+        html: "http://example.com/org2"
+      },
+      {
+        html: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        html: "10"
+      },
+      {
+        html: "CD5678"
+      },
+      {
+        html: "456 Elm St, Town, Country"
+      },
+      {
+        html: "38.987654"
+      },
+      {
+        html: "-84.123456"
+      },
+      {
+        html: "2.2"
+      },
+      {
+        html: "20 September 2023"
+      },
+      {
+        html: "18 September 2023"
+      },
+      {
+        html: "http://example.com/org2"
+      },
+      {
+        html: "http://example.com/siteplan2"
+      }
+    ],
+    [
+      {
+        html: "11"
+      },
+      {
+        html: "CD5678"
+      },
+      {
+        html: "456 Elm St, Town, Country"
+      },
+      {
+        html: "38.987654"
+      },
+      {
+        html: "-84.123456"
+      },
+      {
+        html: "2.2"
+      },
+      {
+        html: "20 September 2023"
+      },
+      {
+        html: "18 September 2023"
+      },
+      {
+        html: "http://example.com/org2"
+      },
+      {
+        html: "http://example.com/siteplan2"
       }
     ]
   ]
@@ -410,11 +500,15 @@
 
   </div>
 </div>
+{% endif %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       {% if data.hasErrors %}
-        <p>After you fix your data, <a href="/upload">upload the new version of your dataset</a>.</p>
+        {{ govukButton({
+          text: "Upload a new version",
+          href: "/upload"
+        }) }}
       {% else %}
         <form novalidate method="post">
           {{ govukButton({
