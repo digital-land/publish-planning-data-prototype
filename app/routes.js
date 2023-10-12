@@ -66,8 +66,21 @@ router.post('/results', (req, res) => {
 })
 
 router.post('/download', (req, res) => {
+  res.redirect('/has-webpage')
+})
+
+router.post('/has-webpage', (req, res) => {
+  if(req.session.data.check.hasURL == 'Yes') {
+    res.redirect('/url')
+  } else {
+    res.redirect('/somewhere')
+  }
+})
+
+router.post('/url', (req, res) => {
   res.redirect('/email-address')
 })
+
 
 router.post('/email-address', (req, res) => {
   res.redirect('/name')
@@ -77,16 +90,16 @@ router.post('/name', (req, res) => {
   res.redirect('/lpa')
 })
 
-router.post('/lpa', (req, res) => {
-  res.redirect('/url')
-})
-
-router.post('/url', (req, res) => {
+router.post('/name', (req, res) => {
   // res.redirect('/start-date')
-  res.redirect('/check')
+  res.redirect('/lpa')
 })
 
 router.post('/start-date', (req, res) => {
+  res.redirect('/check')
+})
+
+router.post('/lpa', (req, res) => {
   res.redirect('/check')
 })
 

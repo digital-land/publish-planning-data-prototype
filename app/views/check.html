@@ -20,6 +20,23 @@
         rows: [
           {
             key: {
+              text: "URL where your data is published"
+            },
+            value: {
+              text: data.check.url
+            },
+            actions: {
+              items: [
+                {
+                  href: "/url",
+                  text: "Change",
+                  visuallyHiddenText: "URL"
+                }
+              ]
+            }
+          },
+          {
+            key: {
               text: "Your email address"
             },
             value: {
@@ -65,23 +82,6 @@
                   href: "/name",
                   text: "Change",
                   visuallyHiddenText: "Local planning authority"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "URL where your data is published"
-            },
-            value: {
-              text: data.check.url
-            },
-            actions: {
-              items: [
-                {
-                  href: "/url",
-                  text: "Change",
-                  visuallyHiddenText: "URL"
                 }
               ]
             }
