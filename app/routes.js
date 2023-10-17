@@ -52,7 +52,6 @@ router.post('/dataset', (req, res) => {
 })
 
 router.post('/upload', (req, res) => {
-  // _.set(req.session.data, 'hasErrors', !_.get(req.session.data, 'hasErrors'))
   res.redirect('/errors')
 })
 

@@ -1,10 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% if data.hasErrors %}
-  {% set pageName = 'There’s a problem with your data' %}
-{% else %}
-  {% set pageName = 'Your data can be published' %}
-{% endif %}
+{% set pageName = 'There’s a problem with your data' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -28,50 +24,17 @@
         {{pageName}}
       </h1>
 
-      {# <h2 class="govuk-heading-m">
-        Errors that have been fixed automatically
-      </h2> #}
-
-      {# {{ govukSummaryList({
-        rows: [
-          {
-            key: {
-              text: "Date format"
-            },
-            value: {
-              text: "405 rows had an incorrect date format. We changed the format to X."
-            }
-          },
-          {
-            key: {
-              text: "Thing"
-            },
-            value: {
-              text: "Detail"
-            }
-          }
-        ]
-      }) }} #}
-
-      {# <p>We recommend changing your data to follow the corrections made above.</p> #}
-
-      {% if data.hasErrors %}
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>
-            21 locations are not in England
-          </li>
-          <li>
-            3 last updated dates are in the future
-          </li>
-          <li>
-            1 record has a missing reference
-          </li>
-        </ul>
-      {% else %}
-        {# <p>We have transformed some of your data.</p> #}
-      {% endif %}
-
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          21 locations are not in England
+        </li>
+        <li>
+          3 last updated dates are in the future
+        </li>
+        <li>
+          1 record has a missing reference
+        </li>
+      </ul>
   </div>
 </div>
 
@@ -97,7 +60,7 @@
 {% endset %}
 
 
-{% if data.hasErrors %}
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
@@ -500,7 +463,6 @@
 
   </div>
 </div>
-{% endif %}
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
