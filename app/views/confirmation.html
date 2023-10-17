@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Request sent" %}
+{% set pageName = "Your request to publish data has been sent" %}
 
 {% block content %}
 <div class="govuk-grid-row">
@@ -9,11 +9,11 @@
       titleHtml: pageName
     }) }}
 
-    <p>You’ll be sent a confirmation email. This email will include a link to <a href="/applications/{{application.id}}">download your data</a>.</p>
+    <p>We’ve sent a confirmation email. This email will include a link to <a href="/applications/{{application.id}}">download your data</a>.</p>
 
     <h2 class="govuk-heading-m">What happens next</h2>
 
-    <p>Your data will usually be reviewed within 5 working days.</p>
+    <p>We’ll send you an email once we publish the data. This usually happens within 5 working days.</p>
 
     <h2 class="govuk-heading-m">
       Give feedback

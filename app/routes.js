@@ -1,8 +1,3 @@
-//
-// For guidance on how to create routes see:
-// https://prototype-kit.service.gov.uk/docs/create-routes
-//
-
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 const _ = require('lodash')
@@ -57,11 +52,19 @@ router.post('/dataset', (req, res) => {
 })
 
 router.post('/upload', (req, res) => {
-  _.set(req.session.data, 'hasErrors', !_.get(req.session.data, 'hasErrors'))
-  res.redirect('/results')
+  // _.set(req.session.data, 'hasErrors', !_.get(req.session.data, 'hasErrors'))
+  res.redirect('/errors')
 })
 
-router.post('/results', (req, res) => {
+router.post('/errors', (req, res) => {
+  if(req.session.data.check.fixErrors == 'Yes') {
+    res.redirect('/upload')
+  } else {
+    res.redirect('/transformations')
+  }
+})
+
+router.post('/transformations', (req, res) => {
   res.redirect('/download')
 })
 
@@ -73,7 +76,7 @@ router.post('/has-webpage', (req, res) => {
   if(req.session.data.check.hasURL == 'Yes') {
     res.redirect('/url')
   } else {
-    res.redirect('/somewhere')
+    res.redirect('/no-webpage')
   }
 })
 

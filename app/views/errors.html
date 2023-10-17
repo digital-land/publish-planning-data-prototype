@@ -504,18 +504,33 @@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      {% if data.hasErrors %}
-        {{ govukButton({
-          text: "Upload a new version",
-          href: "/upload"
+      <form novalidate method="post">
+
+        {{ govukRadios({
+          name: "check[fixErrors]",
+          fieldset: {
+            legend: {
+              text: "Do you want to fix the errors before publishing your data?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: data.check.fixErrors,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes, I’ll upload a new version of the data"
+            },
+            {
+              value: "No",
+              text: "No, I’d like to publish the data which is correct"
+            }
+          ]
         }) }}
-      {% else %}
-        <form novalidate method="post">
-          {{ govukButton({
-            text: "Continue"
-          }) }}
-        </form>
-      {% endif %}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
 
     </div>
   </div>
