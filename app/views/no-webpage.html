@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Before you can publish your data' %}
+{% set pageName = 'You cannot continue until you have published your data' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -32,6 +32,13 @@
 {% endset %}
 
 {% set content %}
+
+  We’ve changed some of your data to meet the standards.
+
+  [Download your data](#)
+
+  ## Publishing your data on your website
+
   You must be able to create or edit a webpage on your local planning authority’s (LPA) website. This will probably have a URL ending in .gov.uk or .org.
 
   If you’re not able to do this, you’ll need to ask the person who updates your website.
@@ -50,12 +57,14 @@
 
   This webpage URL must not change, so we can keep collecting the data. If the URL does change, send an email to [digitalland@levellingup.gov.uk](mailto:digitalland@levellingup.gov.uk).
 
+
+
 {% endset %}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-l">{{pageName}}</h1>
-      {{content | govukMarkdown}}
+      {{content | govukMarkdown(headingsStartWith="l")}}
     </div>
   </div>
 {% endblock %}
