@@ -2,6 +2,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 const _ = require('lodash')
 const camden = require('../app/data/camden.json')
+const { DateTime } = require('luxon');
 
 router.all('*', (req, res, next) => {
   res.locals.query = req.query
@@ -109,6 +110,11 @@ router.get('/transformations', (req, res) => {
       newRow[key] = { value: row[key] };
     }
     return newRow;
+  })
+  .map(row => {
+    let date = DateTime.fromFormat(row['Start date'].value, 'dd/MM/yyyy')
+    row['Start date'].value = date.toFormat('yyyy-MM-dd')
+    return row
   })
 
   res.render('transformations', {

@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Your data will be changed into a new format when we publish it' %}
+{% set pageName = 'Your data will be changed when it’s published' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -17,46 +17,35 @@
         {{pageName}}
       </h1>
 
-      <p>Here’s what we’ll change:</p>
-
       <ul class="govuk-list govuk-list--bullet">
-        <li>
-          20 dates will be converted into the YYYY-MM-DD format
-        </li>
-        <li>
-          20 geometries will be corrected so that it’s within England (by flipping the x and y coordinates)
-        </li>
-        {# <li>57 rows have been removed</li> #}
-        <li>
-          Column headings with more than one word will be combined and split with hyphens
-        </li>
-        <li>
-          Some columns will be ignored because they’re not needed
-        </li>
+        <li>20 geometries will be changed to make sure they’re located in England</li>
+        <li>20 dates will be changed to YYYY-MM-DD format</li>
+        <li>Columns ‘Legislation’ and ‘Notes’ will be removed</li>
+        <li>Column headings will become lowercase</li>
+        <li>Column headings will be hyphenated</li>
       </ul>
-
     </div>
   </div>
 
  <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
       <h2 class="govuk-heading-m">
-        Records that will be changed
+        Records that we’ll change
       </h2>
 
        <div class="app-scrollable-container">
         <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Reference</th>
-            <th scope="col" class="govuk-table__header">Name</th>
-            <th scope="col" class="govuk-table__header">Geometry</th>
-            <th scope="col" class="govuk-table__header">Start date</th>
-            <th scope="col" class="govuk-table__header">Legislation</th>
-            <th scope="col" class="govuk-table__header">Notes</th>
-            <th scope="col" class="govuk-table__header">Point</th>
-            <th scope="col" class="govuk-table__header">End date</th>
-            <th scope="col" class="govuk-table__header">Document URL</th>
+            <th scope="col" class="govuk-table__header">reference</th>
+            <th scope="col" class="govuk-table__header">name</th>
+            <th scope="col" class="govuk-table__header">geometry</th>
+            <th scope="col" class="govuk-table__header">start-date</th>
+            {# <th scope="col" class="govuk-table__header">legislation</th> #}
+            {# <th scope="col" class="govuk-table__header">Notes</th> #}
+            <th scope="col" class="govuk-table__header">point</th>
+            <th scope="col" class="govuk-table__header">end-date</th>
+            <th scope="col" class="govuk-table__header">document-url</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -70,24 +59,24 @@
                 {% if row.Geometry %}
                   {{ govukInsetText({
                     classes: "app-inset-text---warning",
-                    html: '<p class="app-inset-text__value">'+row.Geometry.value+'</p> <p class="app-inset-text__warning">X and Y coordinates reversed to make it be in England</p>'
+                    html: '<p class="app-inset-text__value">'+row.Geometry.value+'</p> <p class="app-inset-text__warning">Geometry changed to make sure it’s located in England</p>'
                   }) }}
                 {% else %}
                   {{row.Geometry.value}}
                 {% endif %}
               </td>
               <td class="govuk-table__cell">
-                {% if row['Start date'].error %}
+                {% if row['Start date'] %}
                   {{ govukInsetText({
-                    classes: "app-inset-text---error",
-                    html: '<p class="app-inset-text__value">'+row['Start date'].value+'</p> <p class="app-inset-text__error">'+row['Start date'].error +'</p>'
+                    classes: "app-inset-text---warning",
+                    html: '<p class="app-inset-text__value">'+row['Start date'].value+'</p> <p class="app-inset-text__warning">Date format changed</p>'
                   }) }}
                 {% else %}
                   {{row['Start date'].value}}
                 {% endif %}
               </td>
-              <td class="govuk-table__cell">{{row.Legisliation.value}}</td>
-              <td class="govuk-table__cell">{{row.Notes.value}}</td>
+              {# <td class="govuk-table__cell">{{row.Legisliation.value}}</td> #}
+              {# <td class="govuk-table__cell">{{row.Notes.value}}</td> #}
               <td class="govuk-table__cell app-wrap">{{row.Point.value}}</td>
               <td class="govuk-table__cell">{{row['End date'].value}}</td>
               <td class="govuk-table__cell">{{row['Document URL'].value}}</td>
