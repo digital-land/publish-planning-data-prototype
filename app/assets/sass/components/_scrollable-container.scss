@@ -5,6 +5,13 @@
     th, td {
       white-space: nowrap;
     }
+
+    td.app-wrap {
+      // white-space: unset;
+      max-width: 500px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
 
   max-height: 500px;
