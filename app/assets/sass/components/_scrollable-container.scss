@@ -11,6 +11,11 @@
       max-width: 500px;
       overflow: hidden;
       text-overflow: ellipsis;
+
+      .app-inset-text__value {
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 

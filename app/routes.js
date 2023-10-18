@@ -100,8 +100,23 @@ router.post('/errors', (req, res) => {
   }
 })
 
+router.get('/transformations', (req, res) => {
+  let rows = camden.slice(-20);
+
+  rows = rows.map(row => {
+    const newRow = {};
+    for (const key in row) {
+      newRow[key] = { value: row[key] };
+    }
+    return newRow;
+  })
+
+  res.render('transformations', {
+    rows
+  })
+})
+
 router.post('/transformations', (req, res) => {
-  // res.redirect('/download')
   res.redirect('/has-webpage')
 })
 
