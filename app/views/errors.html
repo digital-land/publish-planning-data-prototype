@@ -25,18 +25,10 @@
       </h1>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>
-          21 locations are not in England
-        </li>
-        <li>
-          3 last updated dates are in the future
-        </li>
-        <li>
-          1 record has a missing reference
-        </li>
-        <li>
-          Entry date is missing - what do we do in this case?
-        </li>
+        <li>{{referenceErrorCount}} references are missing</li>
+        <li>{{locationErrorCount}} locations are not in England</li>
+        <li>{{startDateErrorCount}} start dates are in the future</li>
+        {# <li> Entry date is missing - what do we do in this case? </li> #}
       </ul>
   </div>
 </div>

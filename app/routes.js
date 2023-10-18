@@ -88,8 +88,32 @@ router.get('/errors', (req, res) => {
     return newRow
   })
 
+  const locationErrorCount = rows.reduce((acc, row) => {
+    if (row.Geometry.error) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
+  const referenceErrorCount = rows.reduce((acc, row) => {
+    if (row.Reference.error) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
+  const startDateErrorCount = rows.reduce((acc, row) => {
+    if (row['Start date'].error) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
   res.render('errors', {
-    rows
+    rows,
+    referenceErrorCount,
+    locationErrorCount,
+    startDateErrorCount
   })
 })
 
