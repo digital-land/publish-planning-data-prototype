@@ -20,6 +20,7 @@
       <ul class="govuk-list govuk-list--bullet">
         <li>20 geometries will be changed to make sure they’re located in England</li>
         <li>20 dates will be changed to YYYY-MM-DD format</li>
+        <li>20 entry dates have been added and set to today</li>
         <li>Columns ‘Legislation’ and ‘Notes’ will be removed</li>
         <li>Column headings will become lowercase</li>
         <li>Column headings will be hyphenated</li>
@@ -41,6 +42,7 @@
             <th scope="col" class="govuk-table__header">name</th>
             <th scope="col" class="govuk-table__header">geometry</th>
             <th scope="col" class="govuk-table__header">start-date</th>
+            <th scope="col" class="govuk-table__header">entry-date</th>
             {# <th scope="col" class="govuk-table__header">legislation</th> #}
             {# <th scope="col" class="govuk-table__header">Notes</th> #}
             <th scope="col" class="govuk-table__header">point</th>
@@ -70,6 +72,16 @@
                   {{ govukInsetText({
                     classes: "app-inset-text---warning",
                     html: '<p class="app-inset-text__value">'+row['Start date'].value+'</p> <p class="app-inset-text__warning">Date format changed</p>'
+                  }) }}
+                {% else %}
+                  {{row['Start date'].value}}
+                {% endif %}
+              </td>
+              <td class="govuk-table__cell">
+                {% if row['Entry date'] %}
+                  {{ govukInsetText({
+                    classes: "app-inset-text---warning",
+                    html: '<p class="app-inset-text__value">'+row['Entry date'].value+'</p> <p class="app-inset-text__warning">Entry date added and set to today</p>'
                   }) }}
                 {% else %}
                   {{row['Start date'].value}}

@@ -140,6 +140,12 @@ router.get('/transformations', (req, res) => {
     row['Start date'].value = date.toFormat('yyyy-MM-dd')
     return row
   })
+  .map(row => {
+    row['Entry date'] = {
+      value: DateTime.local().toFormat('yyyy-MM-dd')
+    }
+    return row
+  })
 
   res.render('transformations', {
     rows
