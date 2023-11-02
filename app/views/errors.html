@@ -105,18 +105,8 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
-
-        {{ govukFileUpload({
-          id: "check[file]",
-          name: "check[file]",
-          label: {
-            text: 'Upload a new verison',
-            classes: 'govuk-label--m'
-          }
-        }) }}
-
         {{ govukButton({
-          text: "Continue"
+          text: "Upload a new version"
         }) }}
       </form>
 
