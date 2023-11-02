@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Check details and send a request to publish your data' %}
+{% set pageName = 'Check details and send your data' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -20,15 +20,32 @@
         rows: [
           {
             key: {
-              text: "URL where your data is published"
+              text: "Data subject"
             },
             value: {
-              text: data.check.url
+              text: data.check.dataSubject
             },
             actions: {
               items: [
                 {
-                  href: "/url",
+                  href: "/data-subject",
+                  text: "Change",
+                  visuallyHiddenText: "URL"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Data set"
+            },
+            value: {
+              text: data.check.dataset
+            },
+            actions: {
+              items: [
+                {
+                  href: "/data-subject",
                   text: "Change",
                   visuallyHiddenText: "URL"
                 }
@@ -85,30 +102,13 @@
                 }
               ]
             }
-          },
-          {
-            key: {
-              text: "Date you published your data"
-            },
-            value: {
-              text: data.check.startDate | isoDateFromDateInput | govukDate
-            },
-            actions: {
-              items: [
-                {
-                  href: "/start-date",
-                  text: "Change",
-                  visuallyHiddenText: "Date you published your data"
-                }
-              ]
-            }
-          } if 1 == 2
+          }
         ]
       }) }}
 
       <form novalidate method="post">
         {{ govukButton({
-          text: "Send request"
+          text: "Send data"
         }) }}
       </form>
     </div>

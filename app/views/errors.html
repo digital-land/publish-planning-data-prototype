@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'There’s a problem with your data' %}
+{% set pageName = 'There’s a problem' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -106,31 +106,21 @@
     <div class="govuk-grid-column-two-thirds">
       <form novalidate method="post">
 
-        {{ govukRadios({
-          name: "check[fixErrors]",
-          fieldset: {
-            legend: {
-              text: "Do you want to fix the errors before you publish the data?",
-              classes: "govuk-fieldset__legend--m"
-            }
-          },
-          value: data.check.fixErrors,
-          items: [
-            {
-              value: "Yes",
-              text: "Yes"
-            },
-            {
-              value: "No",
-              text: "No, publish the valid data and I’ll fix the invalid data later"
-            }
-          ]
+        {{ govukFileUpload({
+          id: "check[file]",
+          name: "check[file]",
+          label: {
+            text: 'Upload a new verison',
+            classes: 'govuk-label--m'
+          }
         }) }}
 
         {{ govukButton({
           text: "Continue"
         }) }}
       </form>
+
+      <a style="color: #fff" href="/results?noErrors=true">No errors</a>
 
     </div>
   </div>
