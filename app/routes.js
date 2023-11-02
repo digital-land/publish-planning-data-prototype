@@ -133,7 +133,7 @@ router.get('/results', (req, res) => {
 })
 
 router.post('/results', (req, res) => {
-  res.redirect('/results')
+  res.redirect('/upload')
 })
 
 router.post('/email-address', (req, res) => {
