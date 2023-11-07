@@ -104,13 +104,12 @@
 
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form novalidate method="post">
-        {{ govukButton({
-          text: "Upload a new version"
-        }) }}
-      </form>
+      {{ govukButton({
+        text: "Upload a new version",
+        href: "/upload"
+      }) }}
 
-      <a style="color: #fff" href="/results?noErrors=true">No errors</a>
+      <p><a style="color: #fff" href="/no-errors">No errors</a></p>
 
     </div>
   </div>

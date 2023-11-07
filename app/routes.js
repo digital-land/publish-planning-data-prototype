@@ -54,86 +54,86 @@ router.post('/dataset', (req, res) => {
 })
 
 router.post('/upload', (req, res) => {
-  res.redirect('/results')
-})
-
-router.get('/results', (req, res) => {
-  if(req.query.noErrors == 'true') {
-
-    let rows = camden.map(row => {
-      const newRow = {};
-      for (const key in row) {
-        newRow[key] = { value: row[key] };
-      }
-      return newRow;
-    })
-
-    res.render('no-errors', {
-      rows
-    })
+  if(req.body.check.file == 'no-errors.csv') {
+    res.redirect('/no-errors')
   } else {
-    let rows = camden.slice(0, 10);
-
-    rows = rows.map(row => {
-      const newRow = {};
-      for (const key in row) {
-        newRow[key] = { value: row[key] };
-      }
-      return newRow;
-    })
-
-    rows.map(row => {
-      let newRow = row
-      let errorType = _.sample(['Reference missing', 'Start date must be today or in the past', 'Location not in England'])
-
-      switch(errorType) {
-        case 'Reference missing':
-          newRow.Reference.value = ''
-          newRow.Reference.error = errorType
-          break
-        case 'Start date must be today or in the past':
-          newRow['Start date'].value = '01/12/2025'
-          newRow['Start date'].error = errorType
-          break
-        case 'Location not in England':
-          newRow['Geometry'].error = errorType
-          break
-      }
-      return newRow
-    })
-
-    const locationErrorCount = rows.reduce((acc, row) => {
-      if (row.Geometry.error) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
-
-    const referenceErrorCount = rows.reduce((acc, row) => {
-      if (row.Reference.error) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
-
-    const startDateErrorCount = rows.reduce((acc, row) => {
-      if (row['Start date'].error) {
-        return acc + 1;
-      }
-      return acc;
-    }, 0);
-    res.render('errors', {
-      rows,
-      referenceErrorCount,
-      locationErrorCount,
-      startDateErrorCount
-    })
+    res.redirect('/errors')
   }
-
 })
 
-router.post('/results', (req, res) => {
-  res.redirect('/upload')
+router.get('/no-errors', (req, res) => {
+  let rows = camden.map(row => {
+    const newRow = {};
+    for (const key in row) {
+      newRow[key] = { value: row[key] };
+    }
+    return newRow;
+  })
+
+  res.render('no-errors', {
+    rows
+  })
+})
+
+router.get('/errors', (req, res) => {
+  let rows = camden.slice(0, 10);
+
+  rows = rows.map(row => {
+    const newRow = {};
+    for (const key in row) {
+      newRow[key] = { value: row[key] };
+    }
+    return newRow;
+  })
+
+  rows.map(row => {
+    let newRow = row
+    let errorType = _.sample(['Reference missing', 'Start date must be today or in the past', 'Location not in England'])
+
+    switch(errorType) {
+      case 'Reference missing':
+        newRow.Reference.value = ''
+        newRow.Reference.error = errorType
+        break
+      case 'Start date must be today or in the past':
+        newRow['Start date'].value = '01/12/2025'
+        newRow['Start date'].error = errorType
+        break
+      case 'Location not in England':
+        newRow['Geometry'].error = errorType
+        break
+    }
+    return newRow
+  })
+
+  const locationErrorCount = rows.reduce((acc, row) => {
+    if (row.Geometry.error) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
+  const referenceErrorCount = rows.reduce((acc, row) => {
+    if (row.Reference.error) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+
+  const startDateErrorCount = rows.reduce((acc, row) => {
+    if (row['Start date'].error) {
+      return acc + 1;
+    }
+    return acc;
+  }, 0);
+  res.render('errors', {
+    rows,
+    referenceErrorCount,
+    locationErrorCount,
+    startDateErrorCount
+  })
+
+
 })
 
 router.post('/email-address', (req, res) => {
