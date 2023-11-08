@@ -25,7 +25,10 @@
       </h1>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>{{referenceErrorCount}} references are missing</li>
+        {# <li>We could not find a ‘Geometry’ column that contains your polygons</li> #}
+        <li>There’s no column for the name of the conversation area</li>
+        <li>There are no references</li>
+        {# <li>{{referenceErrorCount}} references are missing</li> #}
         <li>{{locationErrorCount}} locations are not in England</li>
         <li>{{startDateErrorCount}} start dates are in the future</li>
         {# <li> Entry date is missing - what do we do in this case? </li> #}
@@ -36,15 +39,15 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
     <h2 class="govuk-heading-m">
-      Records with errors
+      Errors
     </h2>
 
-    <div class="app-scrollable-container">
+    <div class="app-scrollable-container" s>
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
             <th scope="col" class="govuk-table__header">Reference</th>
-            <th scope="col" class="govuk-table__header">Name</th>
+            <th scope="col" class="govuk-table__header">Description</th>
             <th scope="col" class="govuk-table__header">Geometry</th>
             <th scope="col" class="govuk-table__header">Start date</th>
             <th scope="col" class="govuk-table__header">Legislation</th>

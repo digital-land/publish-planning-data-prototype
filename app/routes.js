@@ -88,7 +88,13 @@ router.get('/errors', (req, res) => {
 
   rows.map(row => {
     let newRow = row
-    let errorType = _.sample(['Reference missing', 'Start date must be today or in the past', 'Location not in England'])
+    newRow.Reference.value = ''
+    return newRow
+  })
+
+  rows.map(row => {
+    let newRow = row
+    let errorType = _.sample(['Start date must be today or in the past', 'Location not in England'])
 
     switch(errorType) {
       case 'Reference missing':
