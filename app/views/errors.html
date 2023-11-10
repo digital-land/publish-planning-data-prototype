@@ -26,11 +26,11 @@
 
       <ul class="govuk-list govuk-list--bullet">
         {# <li>We could not find a ‘Geometry’ column that contains your polygons</li> #}
-        <li>There’s no column for the name of the conservation area</li>
+        <li>There’s no column for the ‘name’ of the conservation area</li>
         <li>There are no references</li>
         {# <li>{{referenceErrorCount}} references are missing</li> #}
         <li>{{locationErrorCount}} locations are not in England</li>
-        <li>{{startDateErrorCount}} start dates are in the future</li>
+        {# <li>{{startDateErrorCount}} start dates are in the future</li> #}
         {# <li> Entry date is missing - what do we do in this case? </li> #}
       </ul>
   </div>
@@ -46,29 +46,28 @@
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Reference</th>
-            <th scope="col" class="govuk-table__header">Description</th>
-            <th scope="col" class="govuk-table__header">Geometry</th>
-            <th scope="col" class="govuk-table__header">Start date</th>
-            <th scope="col" class="govuk-table__header">Legislation</th>
-            <th scope="col" class="govuk-table__header">Notes</th>
-            <th scope="col" class="govuk-table__header">Point</th>
-            <th scope="col" class="govuk-table__header">End date</th>
-            <th scope="col" class="govuk-table__header">Document URL</th>
+            <th scope="col" class="govuk-table__header">refnum</th>
+            <th scope="col" class="govuk-table__header">address</th>
+            <th scope="col" class="govuk-table__header">wkt</th>
+            <th scope="col" class="govuk-table__header">start_date</th>
+            <th scope="col" class="govuk-table__header">notes</th>
+            {# <th scope="col" class="govuk-table__header">point</th> #}
+            {# <th scope="col" class="govuk-table__header">End date</th> #}
+            <th scope="col" class="govuk-table__header">document_url</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
           {% for row in rows %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">
-                {% if row.Reference.error %}
+                {# {% if row.Reference.error %} #}
                   {{ govukInsetText({
                     classes: "app-inset-text---error",
                     html: '<p class="app-inset-text__error">Reference is missing</p>'
                   }) }}
-                {% else %}
+                {# {% else %}
                   {{row.Reference.value}}
-                {% endif %}
+                {% endif %} #}
               </td>
               <td class="govuk-table__cell">{{row.Name.value}}</td>
               <td class="govuk-table__cell app-wrap">
@@ -82,19 +81,19 @@
                 {% endif %}
               </td>
               <td class="govuk-table__cell">
-                {% if row['Start date'].error %}
+                {# {% if row['Start date'].error %}
                   {{ govukInsetText({
                     classes: "app-inset-text---error",
                     html: '<p class="app-inset-text__value">'+row['Start date'].value+'</p> <p class="app-inset-text__error">'+row['Start date'].error +'</p>'
                   }) }}
-                {% else %}
+                {% else %} #}
                   {{row['Start date'].value}}
-                {% endif %}
+                {# {% endif %} #}
               </td>
-              <td class="govuk-table__cell">{{row.Legisliation.value}}</td>
+              {# <td class="govuk-table__cell">{{row.Legisliation.value}}</td> #}
               <td class="govuk-table__cell">{{row.Notes.value}}</td>
-              <td class="govuk-table__cell app-wrap">{{row.Point.value}}</td>
-              <td class="govuk-table__cell">{{row['End date'].value}}</td>
+              {# <td class="govuk-table__cell app-wrap">{{row.Point.value}}</td> #}
+              {# <td class="govuk-table__cell">{{row['End date'].value}}</td> #}
               <td class="govuk-table__cell">{{row['Document URL'].value}}</td>
             </tr>
           {% endfor %}

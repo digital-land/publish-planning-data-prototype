@@ -76,7 +76,8 @@ router.get('/no-errors', (req, res) => {
 })
 
 router.get('/errors', (req, res) => {
-  let rows = camden.slice(0, 10);
+  // let rows = camden.slice(0, 10);
+  let rows = camden
 
   rows = rows.map(row => {
     const newRow = {};
@@ -94,12 +95,15 @@ router.get('/errors', (req, res) => {
 
   rows.map(row => {
     let newRow = row
-    let errorType = _.sample(['Start date must be today or in the past', 'Location not in England'])
+    let errorType = _.sample(['','','','','','','','','','', 'Start date must be today or in the past', 'Location not in England'])
+
+    newRow.Reference.value = ''
+    newRow.Reference.error = errorType
 
     switch(errorType) {
       case 'Reference missing':
-        newRow.Reference.value = ''
-        newRow.Reference.error = errorType
+        // newRow.Reference.value = ''
+        // newRow.Reference.error = errorType
         break
       case 'Start date must be today or in the past':
         newRow['Start date'].value = '01/12/2025'
