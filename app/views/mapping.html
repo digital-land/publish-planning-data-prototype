@@ -1,0 +1,311 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = 'Map your columns' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form novalidate method="post">
+
+        {{ govukRadios({
+          name: "reference",
+          fieldset: {
+            legend: {
+              text: "Reference",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "name",
+          fieldset: {
+            legend: {
+              text: "Name",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "geometry",
+          fieldset: {
+            legend: {
+              text: "Geometry",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "documentation-url",
+          fieldset: {
+            legend: {
+              text: "Documentation URL",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "notes",
+          fieldset: {
+            legend: {
+              text: "Notes",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "start-date",
+          fieldset: {
+            legend: {
+              text: "Start date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "end-date",
+          fieldset: {
+            legend: {
+              text: "End date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukRadios({
+          name: "entry-date",
+          fieldset: {
+            legend: {
+              text: "Entry date",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "refnum",
+              text: "refnum"
+            },
+            {
+              value: "address",
+              text: "address"
+            },
+            {
+              value: "wkt",
+              text: "wkt"
+            },
+            {
+              value: "start_date",
+              text: "start_date"
+            },
+            {
+              value: "notes",
+              text: "notes"
+            },
+            {
+              value: "document_url",
+              text: "document_url"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
