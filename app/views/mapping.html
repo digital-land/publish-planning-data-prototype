@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Map your columns' %}
+{% set pageName = 'Match your columns to the specification' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -12,6 +12,8 @@
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
+
       <form novalidate method="post">
 
         {{ govukRadios({
