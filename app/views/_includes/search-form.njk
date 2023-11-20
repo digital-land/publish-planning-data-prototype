@@ -1,0 +1,22 @@
+<div class="app-search-form">
+  <form>
+    {{ govukInput({
+      id: "search[datasetName]",
+      name: "search[datasetName]",
+      label: {
+        text: "Search by name of dataset",
+        classes: "govuk-label--s app-search-form__label"
+      },
+      value: data.search.datasetName
+    }) }}
+
+    {{ govukButton({
+      text: "Search",
+      classes: "app-search-form__button"
+    }) }}
+  </form>
+
+  {% if data.search.datasetName %}
+    <p class="govuk-!-margin-top-2 govuk-!-margin-bottom-0"><a class="govuk-link--no-visited-state" href="/applications/clear-search">Clear search</a></p>
+  {% endif %}
+</div>

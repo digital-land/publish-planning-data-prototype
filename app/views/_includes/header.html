@@ -1,5 +1,15 @@
+{% if data.user %}
+  {% set serviceUrl = '/overview' %}
+{% else %}
+  {% set serviceUrl = '/account/sign-in' %}
+{% endif %}
+
 {{ govukHeader({
-  homepageUrl: "#",
-  serviceName: serviceName,
-  serviceUrl: "/"
+  productName: serviceName,
+  serviceUrl: serviceUrl,
+  navigationClasses: "govuk-header__navigation--end",
+  navigation: [{
+    href: '/account/sign-out',
+    text: 'Sign out'
+  }] if data.user
 }) }}

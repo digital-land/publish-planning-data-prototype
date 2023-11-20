@@ -1,0 +1,45 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = 'Overview' %}
+{% set primaryNavId = 'overview' %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
+
+    <div class="app-panel">
+      <h2 class="govuk-heading-m">2 datasets have not been started</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="">Article 4 direction area dataset</a>
+        </li>
+        <li>
+          <a href="">Listed building</a>
+        </li>
+      </ul>
+    </div>
+    <div class="app-panel">
+      <h2 class="govuk-heading-m">1 dataset is not working</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="">Conservation area document dataset</a>
+        </li>
+        <li>
+          <a href="">Tree preservation order dataset</a>
+        </li>
+      </ul>
+    </div>
+    <div class="app-panel">
+      <h2 class="govuk-heading-m">1 dataset is awaiting publication</h2>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>
+          <a href="">Article 4 direction dataset</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

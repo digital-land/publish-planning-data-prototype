@@ -1,5 +1,5 @@
+const datasets = require('./datasets.json')
+
 module.exports = {
-
-  // Insert values here
-
+  datasets
 }

@@ -1,0 +1,12 @@
+{{ xGovukPrimaryNavigation({
+  visuallyHiddenTitle: "Navigation",
+  items: [{
+    text: "Overview",
+    href: "/overview",
+    current: primaryNavId == 'overview'
+  }, {
+    text: "Datasets",
+    href: "/datasets",
+    current: primaryNavId == 'datasets'
+  }]
+}) if data.user }}

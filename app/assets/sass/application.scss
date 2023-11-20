@@ -4,7 +4,16 @@
 //
 
 // Add extra styles here
+@import "components/hidden.scss";
 @import "components/scrollable-container.scss";
+@import "components/header.scss";
+@import "components/panel.scss";
+@import "components/prompt.scss";
+@import "components/action-bar.scss";
+@import "components/filter-layout.scss";
+@import "components/filter-panel.scss";
+@import "components/search-form.scss";
+@import "components/list.scss";
 
 .app-inset-text---error {
   border-left: 5px solid govuk-colour('red');

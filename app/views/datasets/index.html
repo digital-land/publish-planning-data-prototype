@@ -1,0 +1,178 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = 'Datasets' %}
+{% set primaryNavId = 'datasets' %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">{{pageName}}</h1>
+
+<div class="app-filter-layout">
+    <div class="app-filter-layout__filter">
+      {% include "_includes/filter-panel.njk" %}
+    </div>
+    <div class="app-filter-layout__content">
+
+      {% include "_includes/search-form.njk" %}
+
+      <div class="app-action-bar">
+        <div class="app-action-bar__filter"></div>
+      </div>
+
+      {% if datasets.length %}
+        <div class="app-list">
+          {% for dataset in datasets %}
+            <div class="app-list__item">
+              <h2 class="govuk-heading-m">
+                <a href="/datasets/{{dataset.id}}">
+                  {{dataset.name}}
+                </a>
+              </h2>
+
+              {{ govukTag({
+                text: dataset.status,
+                classes: dataset.status | statusColour
+              }) }}
+
+              {{ govukSummaryList({
+                classes: "govuk-summary-list--no-border",
+                rows: [
+                  {
+                    key: {
+                      text: "Subject"
+                    },
+                    value: {
+                      text: dataset.subject
+                    }
+                  },
+                  {
+                    key: {
+                      text: "Last published"
+                    },
+                    value: {
+                      text: '19 November 2023 at 12am (midnight)'
+                    }
+                  }
+                ]
+              }) }}
+            </div>
+          {% endfor %}
+        </div>
+      {% else %}
+        <p>There are no results.</p>
+      {% endif %}
+
+      {% include "_includes/pagination.njk" %}
+
+
+    </div>
+  </div>
+
+
+{# <div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-l">Overview</h1>
+
+    <p>You need to publish:</p>
+
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        <a href="">Article 4 direction data</a>
+      </li>
+      <li>
+        <a href="">Article 4 direction area data</a>
+      </li>
+      <li>
+        <a href="">Tree preservation zone dataset</a>
+      </li>
+      <li>
+        <a href="">Tree dataset</a>
+      </li>
+    </ul>
+
+    <div class="app-panel govuk-inset-text app-prompt">
+      <h2 class="govuk-heading-m">Article 4 direction data</h2>
+
+      <p class="app-prompt__text">You need to publish this data.</p>
+
+      {{ govukButton({
+        text: "Publish data"
+      }) }}
+    </div>
+
+    <div class="app-panel govuk-inset-text app-prompt">
+      <h2 class="govuk-heading-m">Article 4 direction area data</h2>
+
+      <p class="app-prompt__text">You need to publish this data.</p>
+
+      {{ govukButton({
+        text: "Publish data"
+      }) }}
+    </div>
+
+    <div class="app-panel govuk-inset-text app-prompt app-prompt--error">
+      <h2 class="govuk-heading-m">Conservation area data</h2>
+      <p class="app-prompt__text">Your data cannot be published.</p>
+
+      {{ govukButton({
+        text: "Fix data"
+      }) }}
+    </div>
+
+    <div class="app-panel">
+      <h2 class="govuk-heading-m">Conservation area document data {{govukTag({ text: "Unverified", classes: 'govuk-tag--blue' })}}</h2>
+
+      {{ govukButton({
+        text: "Verify data"
+      }) }}
+    </div>
+
+
+    <div class="app-panel govuk-inset-text app-prompt app-prompt--error">
+      <h2 class="govuk-heading-m">Listed building data {{govukTag({ text: "Published", classes: 'govuk-tag--green' })}}</h2>
+
+      <p class="app-prompt__text">Your latest data cannot be published.</p>
+
+      {{ govukButton({
+        text: "Fix data"
+      }) }}
+    </div>
+
+    <div class="app-panel">
+      <h2 class="govuk-heading-m">Tree presevation order data {{govukTag({ text: "Published", classes: 'govuk-tag--green' })}}</h2>
+      <p><a href="/">Manage</a></p>
+    </div>
+
+
+
+
+
+
+  </div>
+</div> #}
+
+{% endblock %}
+
+
+{% block scripts %}
+  {{super()}}
+  <script>
+    new AppFrontend.FilterToggleButton({
+      bigModeMediaQuery: '(min-width: 48.063em)',
+      startHidden: false,
+      toggleButton: {
+        container: $('.app-action-bar__filter'),
+        showText: 'Show filter',
+        hideText: 'Hide filter',
+        classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+      },
+      closeButton: {
+        container: $('.app-filter__header-action'),
+        text: 'Close'
+      },
+      filter: {
+        container: $('.app-filter-layout__filter')
+      }
+    })
+  </script>
+{% endblock %}
