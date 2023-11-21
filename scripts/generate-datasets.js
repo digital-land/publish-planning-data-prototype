@@ -11,6 +11,12 @@ const generateDatasets = () => {
 
   datasets.push(generateDataset({
     id: '' + faker.number.int({ min: 123456, max: 999999 }),
+    name: 'Brownfield land dataset',
+    subject: 'Brownfield land data',
+    status: 'Awaiting publication'
+  }))
+  datasets.push(generateDataset({
+    id: '' + faker.number.int({ min: 123456, max: 999999 }),
     name: 'Article 4 direction dataset',
     subject: 'Article 4',
     status: 'Awaiting publication'

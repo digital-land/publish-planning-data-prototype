@@ -2,7 +2,7 @@ module.exports = router => {
 
   router.post('/account/sign-in', (req, res) => {
     req.session.data.user = {}
-    res.redirect('/datasets')
+    res.redirect('/overview')
   })
 
   router.get('/account/sign-out', (req, res) => {
