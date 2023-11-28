@@ -1,0 +1,26 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = 'Your data can be published' %}
+
+{% block beforeContent %}
+  {{ govukBackLink({
+    text: "Back",
+    href: "javascript:window.history.back()"
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-l">
+    {{pageName}}
+  </h1>
+
+  {{ govukButton({
+    text: "Continue",
+    href: "/confirmation"
+  }) }}
+
+
+  </div>
+</div>
+{% endblock %}

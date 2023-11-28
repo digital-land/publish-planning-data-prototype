@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Your data looks correct and can be published" %}
+{% set pageName = "Send your data for us to publish" %}
 
 {% block content %}
 
@@ -25,49 +25,44 @@
 {% endset %}
 
 {% set content %}
-  ## What you need to next
+  You need to send an email to [digitalland@levellingup.gov.uk](mailto:digitalland@levellingup.gov.uk).
 
-  Send an email to [digitalland@levellingup.gov.uk](mailto:digitalland@levellingup.gov.uk) containing:
+  The email must include:
 
   - your full name
-  - the name of your local planning authority
-  - a link to your webpage
+  - the name of your local planning authority (LPA)
+  - a link to a webpage containing the data on your LPA website
 
-  ## How to create your webpage
-
-  You must create a webpage on your local planning authority’s (LPA) website. This will probably have a URL ending in .gov.uk or .org.
-
-  The webpage needs to include:
+  The webpage must include:
 
   - a summary of what the data is about
-  - a confirmation that the data is provided under the Open Government License
   - the date you created or updated the webpage
   - links to your data on this page, for example a CSV
+  - a confirmation that the data is provided under the Open Government License
 
   {{ govukDetails({
     summaryText: "Example webpage",
     text: example | govukMarkdown(headingsStartWith="m")
   }) }}
 
-  This webpage URL must not change, so we can keep collecting the data. If the URL does change, send an email to [digitalland@levellingup.gov.uk](mailto:digitalland@levellingup.gov.uk).
-
 {% endset %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {{ govukPanel({
+    {# {{ govukPanel({
       titleHtml: pageName
-    }) }}
+    }) }} #}
+    <h1 class="govuk-heading-l">{{pageName}}</h1>
 
     {{content | govukMarkdown(headingsStartWith="l")}}
 
-    <p>We’ll send you an email once we publish the data. This usually happens within 5 working days.</p>
+    {# <p>We’ll send you an email once we publish the data. This usually happens within 5 working days.</p>
 
     <h2 class="govuk-heading-m">
       Give feedback
     </h2>
 
-    <p><a href="#">Give feedback about this service</a> (takes 30 seconds).</p>
+    <p><a href="#">Give feedback about this service</a> (takes 30 seconds).</p> #}
 
   </div>
 </div>
