@@ -29,9 +29,8 @@ router.post('/dataset', (req, res) => {
 })
 
 router.post('/upload', (req, res) => {
-  res.redirect('/no-errors')
-  return;
   if(req.body.check.file == 'no-errors.csv') {
+    res.redirect('/no-errors')
   } else {
     res.redirect('/errors')
   }
