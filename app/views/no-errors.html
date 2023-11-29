@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Your data can be published' %}
+{% set pageName = 'Your data has passed our checks and can be published' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -11,7 +11,9 @@
 
 {% block content %}
 
-  <h1 class="govuk-heading-l">
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
     {{pageName}}
   </h1>
 
@@ -19,6 +21,10 @@
     text: "Continue",
     href: "/confirmation"
   }) }}
+    </div>
+  </div>
+
+
 
 
   </div>
