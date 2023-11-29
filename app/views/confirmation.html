@@ -40,24 +40,19 @@
     text: example | govukMarkdown(headingsStartWith="m")
   }) }}
 
+  ## Give feedback
+
+  [Give feedback about this service](#) (takes 30 seconds).
+
 {% endset %}
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    {# {{ govukPanel({
+    {{ govukPanel({
       titleHtml: pageName
-    }) }} #}
-    <h1 class="govuk-heading-l">{{pageName}}</h1>
+    }) }}
 
     {{content | govukMarkdown(headingsStartWith="l")}}
-
-    {# <p>We’ll send you an email once we publish the data. This usually happens within 5 working days.</p>
-
-    <h2 class="govuk-heading-m">
-      Give feedback
-    </h2>
-
-    <p><a href="#">Give feedback about this service</a> (takes 30 seconds).</p> #}
 
   </div>
 </div>
