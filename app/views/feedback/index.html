@@ -1,0 +1,93 @@
+{% extends "layouts/main.html" %}
+{% set title = "Give feedback about publishing planning and housing data for England" %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+      <h1 class="govuk-heading-l">{{ title }}</h1>
+      <form method="get" action="/feedback/confirmation">
+
+        {{ govukRadios({
+          idPrefix: "[feedback][satisfaction]",
+          name: "[feedback][satisfaction]",
+          fieldset: {
+            legend: {
+              text: "How do you feel about your experience using the service?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Delighted",
+              text: "Delighted"
+            }
+            ,
+            {
+              value: "Satisfied",
+              text: "Satisfied"
+            }
+            ,
+            {
+              value: "Unhappy",
+              text: "Unhappy"
+            }
+          ]
+        }) }}
+
+        {{ govukTextarea({
+          id: "[feedback][improve]",
+          name: "[feedback][improve]",
+          label: {
+            text: "How can we improve the service?",
+            classes: 'govuk-label--m'
+          }
+        }) }}
+
+        {% set emailAddress %}
+          {{ govukInput({
+            id: "[feedback][emailAddress]",
+            name: "[feedback][emailAddress]",
+            label: {
+              text: "Email address",
+              classes: 'govuk-label--s'
+            }
+          }) }}
+
+        {% endset %}
+
+        {{ govukRadios({
+          idPrefix: "[feedback][contact]",
+          name: "[feedback][contact]",
+          fieldset: {
+            legend: {
+              text: "Can we contact you about your feedback?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          items: [
+            {
+              value: "Yes",
+              text: "Yes",
+              conditional: {
+                html: emailAddress
+              }
+            }
+            ,
+            {
+              value: "No",
+              text: "No"
+            }
+          ]
+        }) }}
+
+
+
+
+        {{ govukButton({
+          text: "Send feedback"
+        }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+
