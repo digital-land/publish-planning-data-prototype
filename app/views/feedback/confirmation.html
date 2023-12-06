@@ -1,0 +1,21 @@
+{% extends "layouts/main.html" %}
+{% set title = "Feedback sent" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    {{ govukPanel({
+      titleHtml: title
+    }) }}
+
+
+    <h2 class="govuk-heading-m">
+      What you can do next
+    </h2>
+
+    <p>Return to <a href="/">publish planning and housing data</a>.</p>
+
+  </div>
+</div>
+
+{% endblock %}
