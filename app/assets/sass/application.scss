@@ -39,3 +39,75 @@
 
 
 }
+
+.app-tile {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  margin: 20px;
+}
+
+.app-tile--grey {
+  border: 1px solid govuk-shade(govuk-colour("dark-grey"), 50%);
+  background-color: govuk-tint(govuk-colour("dark-grey"), 90%);
+}
+
+.app-tile--green {
+  border: 1px solid govuk-shade(govuk-colour("green"), 20%);
+  background-color: govuk-tint(govuk-colour("green"), 85%);
+}
+
+.app-tile--light-green {
+  border: 1px solid govuk-shade(govuk-colour("light-green"), 65%);
+  background-color: govuk-tint(govuk-colour("light-green"), 75%);
+}
+
+.app-tile--turquoise {
+  border: 1px solid govuk-shade(govuk-colour("turquoise"), 60%);
+  background-color: govuk-tint(govuk-colour("turquoise"), 80%);
+}
+
+.app-tile--blue {
+  border: 1px solid govuk-shade(govuk-colour("blue"), 60%);
+  background-color: govuk-tint(govuk-colour("blue"), 80%);
+}
+
+.app-tile--light-blue {
+  border: 1px solid govuk-shade(govuk-colour("blue"), 60%);
+  background-color: govuk-tint(govuk-colour("blue"), 90%);
+}
+
+.app-tile--purple {
+  border: 1px solid govuk-shade(govuk-colour("bright-purple"), 50%);
+  background-color: govuk-tint(govuk-colour("bright-purple"), 85%);
+}
+
+.app-tile--light-purple {
+  border: 1px solid govuk-shade(govuk-colour("light-purple"), 50%);
+  background-color: govuk-tint(govuk-colour("light-purple"), 85%);
+}
+
+.app-tile--pink {
+  border: 1px solid govuk-shade(govuk-colour("pink"), 50%);
+  background-color: govuk-tint(govuk-colour("pink"), 85%);
+}
+
+.app-tile--red {
+  border: 1px solid govuk-shade(govuk-colour("red"), 80%);
+  background-color: govuk-tint(govuk-colour("red"), 80%);
+}
+
+.app-tile--orange {
+  border: 1px solid govuk-shade(govuk-colour("orange"), 55%);
+  background-color: govuk-tint(govuk-colour("orange"), 75%);
+}
+
+.app-tile--yellow {
+  border: 1px solid govuk-shade(govuk-colour("yellow"), 65%);
+  background-color: govuk-tint(govuk-colour("yellow"), 85%);
+}
+
+.app-tile--brown {
+  border: 1px solid govuk-shade(govuk-colour("brown"), 55%);
+  background-color: govuk-tint(govuk-colour("brown"), 80%);
+}
