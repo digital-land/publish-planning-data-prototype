@@ -25,11 +25,27 @@ router.get('/dataset', (req, res) => {
 })
 
 router.post('/dataset', (req, res) => {
-  res.redirect('/upload')
+  res.redirect('/upload-method')
+})
+
+router.post('/upload-method', (req, res) => {
+  if(req.body.check.uploadMethod == 'file') {
+    res.redirect('/upload')
+  } else {
+    res.redirect('/url')
+  }
 })
 
 router.post('/upload', (req, res) => {
   if(req.body.check.file == 'no-errors.csv') {
+    res.redirect('/no-errors')
+  } else {
+    res.redirect('/errors')
+  }
+})
+
+router.post('/url', (req, res) => {
+  if(req.body.check.url == 'https://good.com') {
     res.redirect('/no-errors')
   } else {
     res.redirect('/errors')
