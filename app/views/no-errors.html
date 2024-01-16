@@ -30,7 +30,6 @@
 
 
 
-
   </div>
 </div>
 {% endblock %}
@@ -41,8 +40,50 @@
     var map = new maplibregl.Map({
         container: 'map', // container id
         style: 'https://demotiles.maplibre.org/style.json', // style URL
-        center: [0, 0], // starting position [lng, lat]
-        zoom: 1 // starting zoom
+        center: [-0.15778393023663284, 51.54490132506487], // starting position [lng, lat]
+        zoom: 11 // starting zoom
+    })
+
+    const camdenData = {{ camden | safe}}
+
+    const addPolygon = (map, geometry) => {
+        map.addSource(geometry.Name, {
+            'type': 'geojson',
+            'data': {
+              'type': 'Feature',
+              'geometry': {
+                type: 'Polygon',
+                coordinates: [
+                  geometry.Geometry
+                ]
+              },
+              'properties': {
+                'entity': geometry.entity,
+                'name': geometry.Name,
+              }
+            },
+        })
+
+        let layer = map.addLayer({
+          id: geometry.Name,
+          source: geometry.Name,
+          type: 'fill',
+          layout: {},
+          paint: {
+            'fill-color': 'red',
+          },
+        });
+    }
+
+    const addCamdenDataToMap = (map) => {
+        camdenData.forEach((geometry) => {
+            addPolygon(map, geometry);
+        });
+    }
+
+
+    map.on('load', () => {
+      addCamdenDataToMap(map)
     })
   </script>
 {% endblock %}

@@ -2,6 +2,7 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 const _ = require('lodash')
 const camden = require('../app/data/camden.json')
+const camden2 = require('../app/data/camden2.json')
 
 router.all('*', (req, res, next) => {
   res.locals.query = req.query
@@ -120,4 +121,10 @@ router.get('/errors', (req, res) => {
     startDateErrorCount
   })
 
+})
+
+router.get('/no-errors', (req, res) => {
+  res.render('no-errors', {
+    camden: JSON.stringify(camden2)
+  })
 })
