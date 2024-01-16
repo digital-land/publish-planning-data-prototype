@@ -111,3 +111,8 @@
   border: 1px solid govuk-shade(govuk-colour("brown"), 55%);
   background-color: govuk-tint(govuk-colour("brown"), 80%);
 }
+
+.app-map {
+  height: 500px;
+  @include govuk-responsive-margin(6, $direction: "bottom");
+}
