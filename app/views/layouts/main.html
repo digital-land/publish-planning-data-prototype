@@ -5,17 +5,27 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
+{% block stylesheets %}
+  {{ super() }}
+  <link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet'>
+{% endblock %}
+
 {% block header %}
   {% include "_includes/header.html" %}
   {{ govukPhaseBanner({
     tag: {
       text: "Beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.',
+    html: 'This is a new service – your <a class="govuk-link" href="/feedback">feedback</a> will help us to improve it.',
     classes: 'govuk-width-container'
   }) }}
 {% endblock %}
 
 {% block footer %}
   {% include "_includes/footer.njk" %}
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
 {% endblock %}

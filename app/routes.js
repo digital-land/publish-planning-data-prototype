@@ -2,42 +2,18 @@ const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 const _ = require('lodash')
 const camden = require('../app/data/camden.json')
-const { DateTime } = require('luxon');
+const camden2 = require('../app/data/camden2.json')
 
 router.all('*', (req, res, next) => {
   res.locals.query = req.query
   next()
 })
 
-router.post('/data-subject', (req, res) => {
-  if(_.get(req, 'body.check.dataSubject') == 'Listed building') {
-    res.redirect('/upload')
-  } else {
-    res.redirect('/dataset')
-  }
-})
-
 router.get('/dataset', (req, res) => {
   let options = [
     { text: 'Article 4 direction dataset' },
-    { text: 'Article 4 direction area dataset' }
+    { text: 'Conversation area dataset' }
   ]
-
-  switch(_.get(req, 'session.data.check.dataSubject')) {
-    case 'Conservation area':
-      options = [
-        { text: 'Conservation area dataset'},
-        { text: 'Conservation area document dataset'}
-      ]
-      break
-    case 'Tree preservation order':
-      options = [
-        { text: 'Tree preservation order dataset'},
-        { text: 'Tree preservation zone dataset'},
-        { text: 'Tree dataset'}
-      ]
-      break
-  }
 
   options = options.map(option => {
     option.value = option.text
@@ -50,7 +26,15 @@ router.get('/dataset', (req, res) => {
 })
 
 router.post('/dataset', (req, res) => {
-  res.redirect('/upload')
+  res.redirect('/upload-method')
+})
+
+router.post('/upload-method', (req, res) => {
+  if(req.body.check.uploadMethod == 'file') {
+    res.redirect('/upload')
+  } else {
+    res.redirect('/url')
+  }
 })
 
 router.post('/upload', (req, res) => {
@@ -61,18 +45,12 @@ router.post('/upload', (req, res) => {
   }
 })
 
-router.get('/no-errors', (req, res) => {
-  let rows = camden.map(row => {
-    const newRow = {};
-    for (const key in row) {
-      newRow[key] = { value: row[key] };
-    }
-    return newRow;
-  })
-
-  res.render('no-errors', {
-    rows
-  })
+router.post('/url', (req, res) => {
+  if(req.body.check.url == 'https://good.com') {
+    res.redirect('/no-errors')
+  } else {
+    res.redirect('/errors')
+  }
 })
 
 router.get('/errors', (req, res) => {
@@ -143,29 +121,10 @@ router.get('/errors', (req, res) => {
     startDateErrorCount
   })
 
-
 })
 
-router.post('/email-address', (req, res) => {
-  res.redirect('/name')
-})
-
-router.post('/name', (req, res) => {
-  res.redirect('/lpa')
-})
-
-router.post('/name', (req, res) => {
-  res.redirect('/lpa')
-})
-
-router.post('/start-date', (req, res) => {
-  res.redirect('/check')
-})
-
-router.post('/lpa', (req, res) => {
-  res.redirect('/check')
-})
-
-router.post('/check', (req, res) => {
-  res.redirect('/confirmation')
+router.get('/no-errors', (req, res) => {
+  res.render('no-errors', {
+    camden: JSON.stringify(camden2)
+  })
 })

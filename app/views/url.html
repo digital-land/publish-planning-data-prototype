@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'URL where your data is published' %}
+{% set pageName = 'URL' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -22,12 +22,16 @@
             isPageHeading: true,
             classes: 'govuk-label--l'
           },
+          hint: {
+            text: "For example, an ArcGIS URL"
+          },
           value: data.check.url
         }) }}
-
         {{ govukButton({
           text: "Continue"
         }) }}
+
+        <p class="govuk-!-padding-top-4 govuk-!-padding-bottom-4"><a style="color: #fff" href="/no-errors">No errors</a></p>
       </form>
     </div>
   </div>

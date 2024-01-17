@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'Data subject' %}
+{% set pageName = 'How do you want to provide your data?' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -15,8 +15,7 @@
       <form novalidate method="post">
 
         {{ govukRadios({
-          idPrefix: "check[dataSubject]",
-          name: "check[dataSubject]",
+          name: "check[uploadMethod]",
           fieldset: {
             legend: {
               text: pageName,
@@ -24,30 +23,24 @@
               classes: "govuk-fieldset__legend--l"
             }
           },
+          value: data.check.uploadMethod,
           items: [
             {
-              value: "Article 4",
-              text: "Article 4"
+              value: "file",
+              text: "File upload"
             },
             {
-              value: "Conservation area",
-              text: "Conservation area"
-            },
-            {
-              value: "Listed building",
-              text: "Listed building"
-            },
-            {
-              value: "Tree preservation order",
-              text: "Tree preservation order"
+              value: "url",
+              text: "URL"
             }
-          ],
-          value: data.check.dataSubject
+          ]
         }) }}
 
         {{ govukButton({
           text: "Continue"
         }) }}
+
+        <p class="govuk-!-padding-top-4 govuk-!-padding-bottom-4"><a style="color: #fff" href="/no-errors">No errors</a></p>
       </form>
     </div>
   </div>
