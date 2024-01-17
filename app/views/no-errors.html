@@ -16,27 +16,75 @@
       <h1 class="govuk-heading-l">
         {{pageName}}
       </h1>
-
-      <p>Here’s what your data will look like on a map:</p>
-
     </div>
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-  <div id="map" class="app-map"></div>
+      <h2 class="govuk-heading-m">Map</h2>
+      <div id="map" class="app-map"></div>
 
-  {{ govukButton({
-    text: "Continue",
-    href: "/confirmation"
-  }) }}
+      <h2 class="govuk-heading-m">Raw data</h2>
+
+      <div class="app-scrollable-container" s>
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">refnum</th>
+              <th scope="col" class="govuk-table__header">address</th>
+              <th scope="col" class="govuk-table__header">wkt</th>
+              <th scope="col" class="govuk-table__header">start_date</th>
+              <th scope="col" class="govuk-table__header">notes</th>
+              {# <th scope="col" class="govuk-table__header">point</th> #}
+              {# <th scope="col" class="govuk-table__header">End date</th> #}
+              <th scope="col" class="govuk-table__header">document_url</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for row in rows %}
+              <tr class="govuk-table__row">
+                <td class="govuk-table__cell">
+                  {{row.Reference.value}}
+                </td>
+                <td class="govuk-table__cell">{{row.Name.value}}</td>
+                <td class="govuk-table__cell app-wrap">
+                  {% if row.Geometry.error %}
+                    {{ govukInsetText({
+                      classes: "app-inset-text---error",
+                      html: '<p class="app-inset-text__value">'+row.Geometry.value+'</p> <p class="app-inset-text__error">'+row.Geometry.error +'</p>'
+                    }) }}
+                  {% else %}
+                    {{row.Geometry.value}}
+                  {% endif %}
+                </td>
+                <td class="govuk-table__cell">
+                  {# {% if row['Start date'].error %}
+                    {{ govukInsetText({
+                      classes: "app-inset-text---error",
+                      html: '<p class="app-inset-text__value">'+row['Start date'].value+'</p> <p class="app-inset-text__error">'+row['Start date'].error +'</p>'
+                    }) }}
+                  {% else %} #}
+                    {{row['Start date'].value}}
+                  {# {% endif %} #}
+                </td>
+                {# <td class="govuk-table__cell">{{row.Legisliation.value}}</td> #}
+                <td class="govuk-table__cell">{{row.Notes.value}}</td>
+                {# <td class="govuk-table__cell app-wrap">{{row.Point.value}}</td> #}
+                {# <td class="govuk-table__cell">{{row['End date'].value}}</td> #}
+                <td class="govuk-table__cell">{{row['Document URL'].value}}</td>
+              </tr>
+            {% endfor %}
+
+          </tbody>
+        </table>
+      </div>
+
+     {{ govukButton({
+        text: "Continue",
+        href: "/confirmation"
+      }) }}
     </div>
   </div>
-
-
-
-  </div>
-</div>
 {% endblock %}
 
 {% block scripts %}

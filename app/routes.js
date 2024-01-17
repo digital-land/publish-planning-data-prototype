@@ -124,7 +124,17 @@ router.get('/errors', (req, res) => {
 })
 
 router.get('/no-errors', (req, res) => {
+  let rows = camden
+
+  rows = rows.map(row => {
+    const newRow = {};
+    for (const key in row) {
+      newRow[key] = { value: row[key] };
+    }
+    return newRow;
+  })
   res.render('no-errors', {
+    rows,
     camden: JSON.stringify(camden2)
   })
 })
