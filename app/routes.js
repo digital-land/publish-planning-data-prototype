@@ -138,3 +138,11 @@ router.get('/no-errors', (req, res) => {
     camden: JSON.stringify(camden2)
   })
 })
+
+router.post('/no-errors', (req, res) => {
+  if(req.body.check.isCorrect == 'Yes') {
+    res.redirect('/confirmation')
+  } else {
+    res.redirect('/upload-method')
+  }
+})

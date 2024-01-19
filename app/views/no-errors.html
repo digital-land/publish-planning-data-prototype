@@ -22,7 +22,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-      <p>{{rows.length}} records passed our checks.</p>
+      <p>{{rows.length}} records can be published.</p>
 
       <div class="app-scrollable-container" s>
         <table class="govuk-table">
@@ -77,13 +77,36 @@
         </table>
       </div>
 
-      <p>Here’s the data on a map:</p>
+      <p>Here’s your data on a map:</p>
       <div id="map" class="app-map"></div>
 
-     {{ govukButton({
-        text: "Continue",
-        href: "/confirmation"
-      }) }}
+      <form method="post">
+
+        {{ govukRadios({
+          name: "check[isCorrect]",
+          fieldset: {
+            legend: {
+              text: "Does your data look correct?",
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          value: data.check.isCorrect,
+          items: [
+            {
+              value: "Yes",
+              text: "Yes"
+            },
+            {
+              value: "No, I need to fix it",
+              text: "No, I need to fix it"
+            }
+          ]
+        }) }}
+
+        {{ govukButton({
+          text: "Continue"
+        }) }}
+      </form>
     </div>
   </div>
 {% endblock %}
