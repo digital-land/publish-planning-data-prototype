@@ -73,7 +73,7 @@ router.get('/errors', (req, res) => {
 
   rows.map(row => {
     let newRow = row
-    let errorType = _.sample(['','','','','','','','','','', 'Start date must be today or in the past', 'Location not in England'])
+    let errorType = _.sample(['','','','','','','','','','', 'Start date must be today or in the past', 'Geometry must be in England'])
 
     newRow.Reference.value = ''
     newRow.Reference.error = errorType
@@ -87,7 +87,7 @@ router.get('/errors', (req, res) => {
         newRow['Start date'].value = '01/12/2025'
         newRow['Start date'].error = errorType
         break
-      case 'Location not in England':
+      case 'Geometry must be in England':
         newRow['Geometry'].error = errorType
         break
     }
