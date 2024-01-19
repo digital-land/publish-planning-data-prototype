@@ -1,6 +1,7 @@
 {% extends "layouts/main.html" %}
 
 {% set pageName = rows.length + ' records passed our checks and can be published' %}
+{% set pageName = 'Check your data before you continue' %}
 
 {% block beforeContent %}
   {{ govukBackLink({
@@ -20,6 +21,8 @@
   </div>
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+
+      <p>{{rows.length}} records passed our checks.</p>
 
       <div class="app-scrollable-container" s>
         <table class="govuk-table">
@@ -74,7 +77,7 @@
         </table>
       </div>
 
-      <p>Here’s what each site looks like on a map:</p>
+      <p>Here’s the data on a map:</p>
       <div id="map" class="app-map"></div>
 
      {{ govukButton({
