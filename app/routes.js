@@ -12,7 +12,7 @@ router.all('*', (req, res, next) => {
 router.get('/dataset', (req, res) => {
   let options = [
     { text: 'Article 4 direction dataset' },
-    { text: 'Conversation area dataset' }
+    { text: 'Conservation area dataset' }
   ]
 
   options = options.map(option => {
@@ -41,7 +41,7 @@ router.post('/upload', (req, res) => {
   if(req.body.check.file == 'no-errors.csv') {
     res.redirect('/no-errors')
   } else {
-    res.redirect('/errors')
+    res.redirect('/upload-progress')
   }
 })
 
