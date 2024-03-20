@@ -116,3 +116,7 @@
   height: 500px;
   @include govuk-responsive-margin(6, $direction: "bottom");
 }
+
+.js-hidden {
+  display: none;
+}
