@@ -1,0 +1,12 @@
+{% extends "layouts/main.html" %}
+
+{% set pageName = 'Your session timed out' %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">{{pageName}}</h1>
+      <p>To use this service, you’ll need to <a href="/">start again</a>.</p>
+    </div>
+  </div>
+{% endblock %}
