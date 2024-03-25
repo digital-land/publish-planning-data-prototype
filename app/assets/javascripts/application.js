@@ -5,57 +5,57 @@
 
 window.GOVUKPrototypeKit.documentReady(() => {
   // Add JavaScript here
- 
-  document.querySelectorAll('.js-hidden').forEach((el, i) => {
-    console.log(el)
+
+  document.querySelectorAll(".js-hidden").forEach((el, i) => {
     el.style.display = "none";
-  })
+  });
 
-  if (document.querySelector('#js-async-processing-message')) {
+  if (document.querySelector("#js-async-processing-message")) {
     setTimeout(() => {
-      let diceRoll = Math.random()
-      let status = 'complete'
-
-      console.log(`diceRoll: ${diceRoll}`)
-
-      if (diceRoll > 0.95) {
-        status = 'timeout'
-      }
-
-      console.log(`status: ${status}`)
-
-      updateAsync(status)
-    }, 5 * 1000)  
+      updateAsync("complete");
+    }, 5 * 1000);
   }
 
   let updateAsync = (status) => {
-    let processingMessage = "Checking file"
-    let completedMessage = "File checked"
-    let timeoutMessage = "Error checking file"
+    let processingHeading = "Checking your data";
+    let processingMessage = `
+      <p>Your data is being checked.</p>
 
-   let statusMessage = processingMessage
+      <p>You&rsquo;ll be able to continue when it&rsquo;s ready.</p>
+    `;
 
-    if (status == 'complete') {
-      statusMessage = completedMessage
-    } else if (status == 'timeout') {
-      statusMessage = timeoutMessage
+    let completedHeading = "Your data has been checked";
+    let completedMessage = "";
+
+    let statusHeading = processingHeading;
+    let statusMessage = processingMessage;
+
+    if (status == "complete") {
+      statusHeading = completedHeading;
+      statusMessage = completedMessage;
+    } else if (status == "timeout") {
+      statusMessage = timeoutMessage;
     }
 
-    let asyncHeadingElement = document.querySelector('#js-async-processing-heading')
-    let asyncMessageElement = document.querySelector('#js-async-processing-message')
-    let asyncButton = document.querySelector('#js-async-continue-button')
+    let asyncHeadingElement = document.querySelector(
+      "#js-async-processing-heading"
+    );
+    let asyncMessageElement = document.querySelector(
+      "#js-async-processing-message"
+    );
+    let asyncButton = document.querySelector("#js-async-continue-button");
 
-    asyncHeadingElement.textContent = statusMessage
-    asyncMessageElement.style.display = "none";
+    asyncHeadingElement.textContent = statusHeading;
+    asyncMessageElement.innerHTML = statusMessage;
 
-    if (status == 'complete') {
+    if (status == "complete") {
       asyncButton.style.display = "inline";
-      asyncButton.textContent = "Continue"
+      asyncButton.textContent = "Continue";
     }
 
-    if (status == 'timeout') {
+    if (status == "timeout") {
       asyncButton.style.display = "inline";
-      asyncButton.textContent = "Continue"
+      asyncButton.textContent = "Continue";
     }
-  }
-})
+  };
+});

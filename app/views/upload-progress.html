@@ -1,32 +1,24 @@
-{% extends "layouts/main.html" %}
+{% extends "layouts/main.html" %} {% set pageName = 'Upload data' %} {% block
+beforeContent %} {{ govukBackLink({ text: "Back", href:
+"javascript:window.history.back()" }) }} {% endblock %} {% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds" aria-live="assertive">
+    <h1 class="govuk-heading-l" id="js-async-processing-heading">
+      Checking your data
+    </h1>
 
-{% set pageName = 'Upload data' %}
+    <div id="js-async-processing-message">
+      <p>Your data is being checked.</p>
 
-{% block beforeContent %}
-  {{ govukBackLink({
-    text: "Back",
-    href: "javascript:window.history.back()"
-  }) }}
-{% endblock %}
-
-{% block content %}
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds" aria-live="assertive">
-
-      <h1 class="govuk-heading-l"  id="js-async-processing-heading">Checking file</h1>
-
-      <p id="js-async-processing-message">Please wait</p>
-    </div>
-
-    <div class="govuk-grid-column-two-thirds">
-      <p>
-        {{ govukButton({
-          text: "Continue",
-          href: "/confirmation",
-          classes: "js-hidden",
-          id: "js-async-continue-button"
-        }) }}
-      </p>
+      <p>You&rsquo;ll be able to continue when it&rsquo;s ready.</p>
     </div>
   </div>
+
+  <div class="govuk-grid-column-two-thirds">
+    <p>
+      {{ govukButton({ text: "Continue", href: "/confirmation", classes:
+      "js-hidden", id: "js-async-continue-button" }) }}
+    </p>
+  </div>
+</div>
 {% endblock %}
