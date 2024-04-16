@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'There was an error retrieving your endpoint' %}
+{% set pageName = 'There was a problem with the URL you provided' %}
 
 {% block content %}
 
@@ -8,7 +8,7 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p>The service could not access the URL you provided. The request gave the following error:</p>
+    <p>We got the following error:</p>
 
     <ul class="govuk-list govuk-list--bullet">
       <li>

@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = 'There was an error processing your file' %}
+{% set pageName = 'The file you provided wasn’t readable' %}
 
 {% block content %}
 
@@ -8,14 +8,14 @@
   <div class="govuk-grid-column-two-thirds">
     <h1 class="govuk-heading-l">{{ pageName }}</h1>
 
-    <p>Check:</p>
+    <p>Make sure:</p>
 
     <ul class="govuk-list govuk-list--bullet">
       <li>the file is in the right format</li>
       <li>there are no errors in the file formatting (for example, a missed comma)</li>
     </ul>
 
-    <p><a href="/start">Try again</a>.</p>
+    <p><a href="/start">Try again</a></p>
   </div>
 </div>
 </div>
