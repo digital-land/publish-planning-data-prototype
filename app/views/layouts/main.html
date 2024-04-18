@@ -6,13 +6,21 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% extends "govuk-prototype-kit/layouts/govuk-branded.njk" %}
 
 {% block stylesheets %}
-  {{ super() }}
-  <link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet'>
+{{ super() }}
+<link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet'>
+{% endblock %}
+
+{% block head %}
+{{ super() }}
+<script src='/public/javascripts/x-govuk-all.js'></script>
+<script>
+  window.GOVUKPrototypeComponents.initAll()
+</script>
 {% endblock %}
 
 {% block header %}
-  {% include "_includes/header.html" %}
-  {{ govukPhaseBanner({
+{% include "_includes/header.html" %}
+{{ govukPhaseBanner({
     tag: {
       text: "Beta"
     },
@@ -22,10 +30,10 @@ https://prototype-kit.service.gov.uk/docs/how-to-use-layouts
 {% endblock %}
 
 {% block footer %}
-  {% include "_includes/footer.njk" %}
+{% include "_includes/footer.njk" %}
 {% endblock %}
 
 {% block scripts %}
-  {{ super() }}
-  <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
+{{ super() }}
+<script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
 {% endblock %}
