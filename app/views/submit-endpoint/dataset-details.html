@@ -1,6 +1,6 @@
 {% extends "layouts/main.html" %}
 
-{% set pageName = "Dataset details" %}
+{% set pageName = data['dataset'] + " details" %}
 
 {% block beforeContent %}
 {{ govukBackLink({
@@ -22,7 +22,7 @@
 
       {{ govukInput({
         label: {
-          text: "Dataset endpoint URL",
+          text: "Endpoint URL",
           classes: "govuk-label--m",
           isPageHeading: false
         },
